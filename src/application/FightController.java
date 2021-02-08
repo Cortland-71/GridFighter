@@ -38,6 +38,10 @@ public class FightController implements Initializable{
 		playerButtonList = new ArrayList<>(Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
 		createEnemyMoveLists();
 		System.out.println(enemyMoveLists);
+		populateGridWithEnemyMoves();
+	}
+	
+	private void populateGridWithEnemyMoves() {
 		for(int i = 0; i < enemyMoveLists.size(); i++) {
 			for(int j = 0; j < enemyMoveLists.get(i).size(); j++) {
 				HBox box = new HBox();
@@ -65,9 +69,7 @@ public class FightController implements Initializable{
 		box.getChildren().add(new Label(((Button)e.getSource()).getText()));
 		playerGrid.add(box, 0, playerQueCounter++);
 		if(playerQueCounter >= 10) {
-			for(Button b : playerButtonList) {
-				b.setDisable(true);
-			}
+			for(Button b : playerButtonList) b.setDisable(true);
 		}
 	}
 }
