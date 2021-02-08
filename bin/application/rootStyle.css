@@ -1,0 +1,15 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {
+	-fx-background-color: #141414;
+	-fx-font-family: "Lucida Console";
+	-fx-text-background-color: -green;
+
+	-borderGray:#303030;
+	-pictureBoxGray: #1c1c1c;
+	-green:#2dd838;
+}
+
+#enemyGrid Line, #playerGrid Line {
+	-fx-stroke: -borderGray;
+}
