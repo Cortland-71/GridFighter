@@ -13,3 +13,25 @@
 #enemyGrid Line, #playerGrid Line {
 	-fx-stroke: -borderGray;
 }
+
+#enemyGrid {
+	-fx-text-background-color: #4D4D4D;
+}
+
+.button {
+	-fx-text-fill: -green;
+	-fx-background-color: -borderGray;
+}
+
+.button:hover {
+	-fx-background-color: #4D4D4D;
+}
+
+.button:pressed {
+	-fx-text-fill: white;
+	-fx-background-color: -green;
+}
+
+#playerQueBox {
+	-fx-text-background-color: orange;
+}

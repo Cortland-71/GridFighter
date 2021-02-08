@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ public class FightController implements Initializable{
 	@FXML Button stealButton;
 	@FXML Button insureButton;
 	@FXML Button healButton;
+	@FXML Button executeButton;
 	
 	private List<Button> playerButtonList;
 	
@@ -36,6 +38,7 @@ public class FightController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		playerButtonList = new ArrayList<>(Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
+		executeButton.setDisable(true);
 		createEnemyMoveLists();
 		System.out.println(enemyMoveLists);
 		populateGridWithEnemyMoves();
@@ -44,9 +47,14 @@ public class FightController implements Initializable{
 	private void populateGridWithEnemyMoves() {
 		for(int i = 0; i < enemyMoveLists.size(); i++) {
 			for(int j = 0; j < enemyMoveLists.get(i).size(); j++) {
+				int currentNum = enemyMoveLists.get(i).get(j);
 				HBox box = new HBox();
+				Label numLabel = new Label(Integer.toString(currentNum));
 				box.setAlignment(Pos.CENTER);
-				box.getChildren().add(new Label(Integer.toString(enemyMoveLists.get(i).get(j))));
+				box.getChildren().add(numLabel);
+				if(currentNum == Collections.max(enemyMoveLists.get(i))) {
+					numLabel.setStyle("-fx-text-fill: red;");
+				}
 				enemyGrid.add(box, j, i);
 			}
 		}
@@ -70,6 +78,7 @@ public class FightController implements Initializable{
 		playerGrid.add(box, 0, playerQueCounter++);
 		if(playerQueCounter >= 10) {
 			for(Button b : playerButtonList) b.setDisable(true);
+			executeButton.setDisable(false);
 		}
 	}
 }

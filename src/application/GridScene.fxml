@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FightController">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FightController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -153,11 +153,11 @@
                   </GridPane>
                </children></VBox>
             <Region prefHeight="720.0" prefWidth="11.0" />
-            <VBox alignment="CENTER" prefHeight="720.0" prefWidth="161.0">
+            <VBox fx:id="playerQueBox" alignment="CENTER" prefHeight="720.0" prefWidth="161.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                      <children>
-                        <Label text="Player Que" />
+                        <Label text="PLAYER QUE" />
                      </children>
                   </HBox>
                   <GridPane fx:id="playerGrid" gridLinesVisible="true" prefHeight="500.0" prefWidth="161.0">
@@ -199,7 +199,7 @@
                <children>
                   <Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
                   <Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
+                  <Button fx:id="executeButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
                </children>
                <padding>
                   <Insets top="10.0" />
