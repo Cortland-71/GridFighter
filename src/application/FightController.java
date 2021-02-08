@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
@@ -34,9 +35,13 @@ public class FightController implements Initializable{
 	private static int playerQueCounter = 0;
 	
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();
+	
+	private Player player;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		player = new Player();
+		setAllPlayerStats();
 		playerButtonList = new ArrayList<>(Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
 		executeButton.setDisable(true);
 		createEnemyMoveLists();
@@ -80,5 +85,10 @@ public class FightController implements Initializable{
 			for(Button b : playerButtonList) b.setDisable(true);
 			executeButton.setDisable(false);
 		}
+	}
+	
+	@FXML ProgressBar playerHpBar;
+	private void setAllPlayerStats() {
+		playerHpBar.setProgress(player.getHp());
 	}
 }
