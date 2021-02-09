@@ -216,7 +216,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="229.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="270.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="270.0" fitWidth="282.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
                      </image>
@@ -234,11 +234,49 @@
             <HBox spacing="5.0">
                <children>
                   <Label text="HP" />
-                  <ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="250.0" progress="0.0" />
+                  <ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.0" />
+                  <Label text="Label" />
                </children>
                <padding>
                   <Insets left="15.0" />
                </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="EG" />
+                  <ProgressBar fx:id="playerHpBar1" prefHeight="11.0" prefWidth="215.0" progress="0.0" />
+                  <Label text="Label" />
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="153.0" prefWidth="300.0">
+               <children>
+                  <VBox prefHeight="153.0" prefWidth="150.0" spacing="5.0">
+                     <children>
+                        <Label text="COST" />
+                        <Label text="ATK" />
+                        <Label text="DEF" />
+                        <Label text="STL" />
+                        <Label text="INS" />
+                        <Label text="HEL $" />
+                     </children>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="150.0" spacing="5.0">
+                     <children>
+                        <Label text="EFFECT" />
+                        <Label text="ATK" />
+                        <Label text="DEF" />
+                        <Label text="STL" />
+                        <Label text="INS" />
+                        <Label text="HEL" />
+                     </children>
+                  </VBox>
+               </children>
             </HBox>
          </children></VBox>
    </right>
@@ -247,7 +285,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="251.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="270.0" fitWidth="287.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="270.0" fitWidth="287.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
                      </image>

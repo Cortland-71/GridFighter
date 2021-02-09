@@ -46,7 +46,6 @@ public class FightController implements Initializable{
 		playerButtonList = new ArrayList<>(Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
 		executeButton.setDisable(true);
 		createEnemyMoveLists();
-		System.out.println(enemyMoveLists);
 		populateGridWithEnemyMoves();
 	}
 	
@@ -71,7 +70,7 @@ public class FightController implements Initializable{
 			List<Integer> rowList = new ArrayList<>();
 			for(int col = 0; col < 5; col++) {
 				Random rand = new Random();
-				rowList.add(rand.nextInt((20-0)+1)+0);
+				rowList.add(rand.nextInt((20-5)+1)+5);
 			}
 			enemyMoveLists.add(rowList);
 		}
