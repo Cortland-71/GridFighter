@@ -235,7 +235,7 @@
                <children>
                   <Label text="HP" />
                   <ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.0" />
-                  <Label text="Label" />
+                  <Label fx:id="playerHpLabel" text="Label" />
                </children>
                <padding>
                   <Insets left="15.0" />
@@ -244,8 +244,8 @@
             <HBox alignment="CENTER_LEFT" spacing="5.0">
                <children>
                   <Label text="EG" />
-                  <ProgressBar fx:id="playerHpBar1" prefHeight="11.0" prefWidth="215.0" progress="0.0" />
-                  <Label text="Label" />
+                  <ProgressBar fx:id="playerEgBar" prefHeight="11.0" prefWidth="215.0" progress="0.0" />
+                  <Label fx:id="playerEgLabel" text="Label" />
                </children>
                <padding>
                   <Insets left="15.0" />

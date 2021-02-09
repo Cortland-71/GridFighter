@@ -88,8 +88,14 @@ public class FightController implements Initializable{
 	}
 	
 	@FXML ProgressBar playerHpBar;
+	@FXML Label playerHpLabel;
+	@FXML ProgressBar playerEgBar;
+	@FXML Label playerEgLabel;
 	private void setAllPlayerStats() {
 		playerHpBar.setProgress(player.getHp());
+		playerHpLabel.setText(Double.toString(player.getHp()));
+		playerEgBar.setProgress(player.getEg());
+		playerEgLabel.setText(Double.toString(player.getEg()));
 	}
 	
 	public void executeButtonPress() {
