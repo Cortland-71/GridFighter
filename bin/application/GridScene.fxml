@@ -15,310 +15,313 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FightController">
-   <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefHeight="590.0" prefWidth="41.0">
-               <children>
-                  <Region prefHeight="25.0" prefWidth="200.0" />
-                  <GridPane prefHeight="500.0" prefWidth="54.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="1" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                           <children>
-                              <Label text="2" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-                           <children>
-                              <Label text="3" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
-                           <children>
-                              <Label text="4" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
-                           <children>
-                              <Label text="5" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
-                           <children>
-                              <Label text="6" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
-                           <children>
-                              <Label text="7" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="7">
-                           <children>
-                              <Label text="8" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="8">
-                           <children>
-                              <Label text="9" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="9">
-                           <children>
-                              <Label text="10" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </GridPane>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="720.0" prefWidth="283.0">
-               <children>
-                  <GridPane prefHeight="25.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ATK" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-                           <children>
-                              <Label text="DEF" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
-                           <children>
-                              <Label text="STL" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
-                           <children>
-                              <Label text="INS" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
-                           <children>
-                              <Label text="HEL" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </GridPane>
-                  <GridPane fx:id="enemyGrid" gridLinesVisible="true" prefHeight="500.0" prefWidth="283.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-               </children></VBox>
-            <Region prefHeight="720.0" prefWidth="11.0" />
-            <VBox fx:id="playerQueBox" alignment="CENTER" prefHeight="720.0" prefWidth="161.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
-                     <children>
-                        <Label text="PLAYER QUE" />
-                     </children>
-                  </HBox>
-                  <GridPane fx:id="playerGrid" gridLinesVisible="true" prefHeight="500.0" prefWidth="161.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </center>
-   <bottom>
-      <VBox prefHeight="130.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
-               <children>
-                  <Button fx:id="attackButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="ATTACK" />
-                  <Button fx:id="defendButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="DEFEND" />
-                  <Button fx:id="stealButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="STEAL" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
-               <children>
-                  <Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
-                  <Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
-                  <Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </bottom>
-   <right>
-      <VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="229.0" prefWidth="300.0">
-               <children>
-                  <ImageView fitHeight="270.0" fitWidth="282.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label text="Cash" />
-               </children>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </HBox>
-            <HBox spacing="5.0">
-               <children>
-                  <Label text="HP" />
-                  <ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.0" />
-                  <Label fx:id="playerHpLabel" text="Label" />
-               </children>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" spacing="5.0">
-               <children>
-                  <Label text="EG" />
-                  <ProgressBar fx:id="playerEgBar" prefHeight="11.0" prefWidth="215.0" progress="0.0" />
-                  <Label fx:id="playerEgLabel" text="Label" />
-               </children>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="153.0" prefWidth="300.0">
-               <children>
-                  <VBox prefHeight="153.0" prefWidth="150.0" spacing="5.0">
-                     <children>
-                        <Label text="COST" />
-                        <Label text="ATK" />
-                        <Label text="DEF" />
-                        <Label text="STL" />
-                        <Label text="INS" />
-                        <Label text="HEL $" />
-                     </children>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="150.0" spacing="5.0">
-                     <children>
-                        <Label text="EFFECT" />
-                        <Label text="ATK" />
-                        <Label text="DEF" />
-                        <Label text="STL" />
-                        <Label text="INS" />
-                        <Label text="HEL" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children></VBox>
-   </right>
-   <left>
-      <VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="251.0" prefWidth="300.0">
-               <children>
-                  <ImageView fitHeight="270.0" fitWidth="287.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label text="Cash" />
-               </children>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </HBox>
-            <HBox spacing="5.0">
-               <children>
-                  <Label text="HP" />
-                  <ProgressBar fx:id="enemyHPBar" prefWidth="250.0" progress="0.0" />
-               </children>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </HBox>
-         </children></VBox>
-   </left>
-   <top>
-      <VBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="GRID FIGHTER" />
-         </children>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </VBox>
-   </top>
+	<center>
+		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<children>
+				<VBox alignment="CENTER" prefHeight="590.0" prefWidth="41.0">
+					<children>
+						<Region prefHeight="25.0" prefWidth="200.0" />
+						<GridPane prefHeight="500.0" prefWidth="54.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+									<children>
+										<Label text="1" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+									<children>
+										<Label text="2" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+									<children>
+										<Label text="3" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+									<children>
+										<Label text="4" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+									<children>
+										<Label text="5" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+									<children>
+										<Label text="6" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
+									<children>
+										<Label text="7" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="7">
+									<children>
+										<Label text="8" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="8">
+									<children>
+										<Label text="9" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="9">
+									<children>
+										<Label text="10" />
+									</children>
+								</VBox>
+							</children>
+						</GridPane>
+					</children>
+				</VBox>
+				<VBox alignment="CENTER" prefHeight="720.0" prefWidth="283.0">
+					<children>
+						<GridPane prefHeight="25.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+									<children>
+										<Label text="ATK" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+									<children>
+										<Label text="DEF" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+									<children>
+										<Label text="STL" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+									<children>
+										<Label text="INS" />
+									</children>
+								</VBox>
+								<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
+									<children>
+										<Label text="HEL" />
+									</children>
+								</VBox>
+							</children>
+						</GridPane>
+						<GridPane fx:id="enemyGrid" gridLinesVisible="true" prefHeight="500.0" prefWidth="283.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+						</GridPane>
+					</children>
+				</VBox>
+				<Region prefHeight="720.0" prefWidth="11.0" />
+				<VBox fx:id="playerQueBox" alignment="CENTER" prefHeight="720.0" prefWidth="161.0">
+					<children>
+						<HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+							<children>
+								<Label text="PLAYER QUE" />
+							</children>
+						</HBox>
+						<GridPane fx:id="playerGrid" gridLinesVisible="true" prefHeight="500.0" prefWidth="161.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+						</GridPane>
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+	</center>
+	<bottom>
+		<VBox prefHeight="130.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+					<children>
+						<Button fx:id="attackButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="ATTACK" />
+						<Button fx:id="defendButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="DEFEND" />
+						<Button fx:id="stealButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="STEAL" />
+					</children>
+					<padding>
+						<Insets bottom="10.0" />
+					</padding>
+				</HBox>
+				<HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+					<children>
+						<Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
+						<Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
+						<Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
+					</children>
+					<padding>
+						<Insets top="10.0" />
+					</padding>
+				</HBox>
+			</children>
+		</VBox>
+	</bottom>
+	<right>
+		<VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox alignment="CENTER" prefHeight="229.0" prefWidth="300.0">
+					<children>
+						<ImageView fitHeight="270.0" fitWidth="282.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
+							</image>
+						</ImageView>
+					</children>
+				</HBox>
+				<HBox>
+					<children>
+						<Label text="Cash" />
+					</children>
+					<padding>
+						<Insets left="15.0" />
+					</padding>
+				</HBox>
+				<HBox spacing="5.0">
+					<children>
+						<Label text="HP" />
+						<ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.0" />
+						<Label fx:id="playerHpLabel" text="Label" />
+					</children>
+					<padding>
+						<Insets left="15.0" />
+					</padding>
+				</HBox>
+				<HBox alignment="CENTER_LEFT" spacing="5.0">
+					<children>
+						<Label text="EG" />
+						<ProgressBar fx:id="playerEgBar" prefHeight="11.0" prefWidth="215.0" progress="0.0" />
+						<Label fx:id="playerEgLabel" text="Label" />
+					</children>
+					<padding>
+						<Insets left="15.0" />
+					</padding>
+				</HBox>
+				<HBox prefHeight="153.0" prefWidth="300.0">
+					<children>
+						<VBox prefHeight="153.0" prefWidth="150.0" spacing="5.0">
+							<children>
+								<Label text="COST" />
+								<Label text="ATK" />
+								<Label text="DEF" />
+								<Label text="STL" />
+								<Label text="INS" />
+								<Label text="HEL $" />
+							</children>
+							<padding>
+								<Insets left="15.0" />
+							</padding>
+						</VBox>
+						<VBox prefHeight="200.0" prefWidth="150.0" spacing="5.0">
+							<children>
+								<Label text="EFFECT" />
+								<Label text="ATK" />
+								<Label text="DEF" />
+								<Label text="STL" />
+								<Label text="INS" />
+								<Label text="HEL" />
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+	</right>
+	<left>
+		<VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox alignment="CENTER" prefHeight="251.0" prefWidth="300.0">
+					<children>
+						<ImageView fitHeight="270.0" fitWidth="287.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
+							</image>
+						</ImageView>
+					</children>
+				</HBox>
+				<HBox>
+					<children>
+						<Label text="Cash" />
+					</children>
+					<padding>
+						<Insets left="15.0" />
+					</padding>
+				</HBox>
+				<HBox spacing="5.0">
+					<children>
+						<Label text="HP" />
+						<ProgressBar fx:id="enemyHPBar" prefWidth="250.0" progress="0.0" />
+					</children>
+					<padding>
+						<Insets left="15.0" />
+					</padding>
+				</HBox>
+			</children>
+		</VBox>
+	</left>
+	<top>
+		<VBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+			<children>
+				<Label text="GRID FIGHTER" />
+			</children>
+			<padding>
+				<Insets left="20.0" />
+			</padding>
+		</VBox>
+	</top>
 </BorderPane>
