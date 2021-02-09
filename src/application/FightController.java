@@ -37,6 +37,7 @@ public class FightController implements Initializable{
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();
 	
 	private Player player;
+	private Enemy enemy;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -90,5 +91,9 @@ public class FightController implements Initializable{
 	@FXML ProgressBar playerHpBar;
 	private void setAllPlayerStats() {
 		playerHpBar.setProgress(player.getHp());
+	}
+	
+	public void executeButtonPress() {
+		
 	}
 }

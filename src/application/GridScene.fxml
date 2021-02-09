@@ -202,7 +202,7 @@
                <children>
                   <Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
                   <Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
-                  <Button fx:id="executeButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
+                  <Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -212,13 +212,13 @@
       </VBox>
    </bottom>
    <right>
-      <VBox prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="229.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="270.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/Shinobi2xbig.png" />
+                        <Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
                      </image>
                   </ImageView>
                </children>
@@ -227,26 +227,49 @@
                <children>
                   <Label text="Cash" />
                </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
             </HBox>
-            <HBox>
+            <HBox spacing="5.0">
                <children>
                   <Label text="HP" />
-                  <ProgressBar fx:id="playerHpBar" prefWidth="200.0" progress="0.0" />
+                  <ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="250.0" progress="0.0" />
                </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
             </HBox>
          </children></VBox>
    </right>
    <left>
-      <VBox prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="251.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="270.0" fitWidth="287.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/Enforcer1Big.png" />
+                        <Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
                      </image>
                   </ImageView>
                </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Cash" />
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                  <Label text="HP" />
+                  <ProgressBar fx:id="enemyHPBar" prefWidth="250.0" progress="0.0" />
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
             </HBox>
          </children></VBox>
    </left>
