@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Enemy extends Person {
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();
-	private List<List<Integer>> indexesToDisableLists = new ArrayList<>();
+	
 
 	public List<List<Integer>> getEnemyMoveLists() {
 		return enemyMoveLists;

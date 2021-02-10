@@ -55,13 +55,18 @@ public class FightController implements Initializable {
 		enemyController = new EnemyController(enemyGrid);
 		enemyController.setAllEnemyStats();
 
-		playerController = new PlayerController(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel);
+		playerController = new PlayerController(enemyController);
+		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel);
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
 		playerController.setAllPlayerStats();
 
 		executeButton.setDisable(true);
+		
+		System.out.println(enemyController.getButtonIndexesToDisable());
 	}
+	
+	
 
 	public void addPlayerMoveToQue(Event e) {
 		playerController.addPlayerMoveToQue(e);

@@ -44,17 +44,20 @@ public class PlayerController {
 	Button executeButton;
 
 	private List<Button> playerButtonList;
+	private EnemyController enemyController;
 
-	public PlayerController(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
+	public PlayerController(EnemyController enemyController) {
+		this.enemyController = enemyController;
+		player = new Player();
+	}
+	
+	public void setPlayerComponents(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
 			Label playerEgLabel) {
 		this.playerGrid = playerGrid;
 		this.playerHpBar = playerHpBar;
 		this.playerEgBar = playerEgBar;
 		this.playerHpLabel = playerHpLabel;
 		this.playerEgLabel = playerEgLabel;
-
-		player = new Player();
-
 	}
 
 	public void setPlayerButtons(Button attackButton, Button defendButton, Button stealButton, Button insureButton,
@@ -79,11 +82,26 @@ public class PlayerController {
 		box.setAlignment(Pos.CENTER);
 		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
 		playerGrid.add(box, 0, playerQueCounter++);
+		
 		if (playerQueCounter >= 10) {
 			for (Button b : playerButtonList)
 				b.setDisable(true);
 			executeButton.setDisable(false);
+			return;
 		}
+		
+		List<Integer> currentIndexesToDisable = enemyController.getButtonIndexesToDisable().get(playerQueCounter);
+		
+		disableAllPlayerButtons(false);
+		for (int index : currentIndexesToDisable) {
+			playerButtonList.get(index).setDisable(true);
+		}
+		
+		
+	}
+	
+	private void disableAllPlayerButtons(boolean state) {
+		for(Button b : playerButtonList) b.setDisable(state);
 	}
 
 	public void setAllPlayerStats() {
@@ -91,6 +109,10 @@ public class PlayerController {
 		playerHpLabel.setText(Double.toString(player.getHp()));
 		playerEgBar.setProgress(player.getEg());
 		playerEgLabel.setText(Double.toString(player.getEg()));
+	}
+	
+	public List<Button> getPlayerButtonList() {
+		return playerButtonList;
 	}
 
 }
