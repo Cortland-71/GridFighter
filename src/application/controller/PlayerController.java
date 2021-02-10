@@ -1,9 +1,10 @@
-package application;
+package application.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import application.model.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;

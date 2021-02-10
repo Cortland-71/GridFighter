@@ -1,9 +1,10 @@
-package application;
+package application.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import application.model.Enemy;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

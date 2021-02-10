@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -55,12 +55,10 @@ public class FightController implements Initializable {
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
-		
+		playerController.disableCorrectButtons();
 		playerController.setAllPlayerStats();
 
 		executeButton.setDisable(true);
-		
-		playerController.disableCorrectButtons();
 	}
 
 	public void addPlayerMoveToQue(Event e) {

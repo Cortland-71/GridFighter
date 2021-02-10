@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FightController">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FightController">
 	<center>
 		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
@@ -219,7 +219,7 @@
 					<children>
 						<ImageView fitHeight="270.0" fitWidth="282.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
 							<image>
-								<Image url="@../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
+								<Image url="@../../../../../Desktop/DarquestPics/Characters/Shinobi/shinobi1.png" />
 							</image>
 						</ImageView>
 					</children>
@@ -289,7 +289,7 @@
 					<children>
 						<ImageView fitHeight="270.0" fitWidth="287.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
 							<image>
-								<Image url="@../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
+								<Image url="@../../../../../Desktop/DarquestPics/Characters/Enforcer/enforcer1.png" />
 							</image>
 						</ImageView>
 					</children>
