@@ -40,6 +40,7 @@ public class PlayerController {
 	@FXML Label helCostLabel;
 
 	private List<Button> playerButtonList;
+	private List<Integer> currentIndexesToDisable;
 	private EnemyController enemyController;
 
 	public PlayerController(EnemyController enemyController) {
@@ -89,9 +90,11 @@ public class PlayerController {
 			executeButton.setDisable(false);
 			return;
 		}
-		
-		List<Integer> currentIndexesToDisable = enemyController.getButtonIndexesToDisable().get(playerQueCounter);
-		
+		disableCorrectButtons();
+	}
+	
+	public void disableCorrectButtons() {
+		currentIndexesToDisable = enemyController.getButtonIndexesToDisable().get(playerQueCounter);
 		disableAllPlayerButtons(false);
 		for (int index : currentIndexesToDisable) {
 			playerButtonList.get(index).setDisable(true);

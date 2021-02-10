@@ -302,7 +302,7 @@
 						<Insets left="15.0" />
 					</padding>
 				</HBox>
-				<HBox spacing="5.0">
+				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
 						<Label text="HP" />
 						<ProgressBar fx:id="enemyHpBar" prefWidth="250.0" progress="0.44" />

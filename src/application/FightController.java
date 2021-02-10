@@ -60,7 +60,7 @@ public class FightController implements Initializable {
 
 		executeButton.setDisable(true);
 		
-		System.out.println(enemyController.getButtonIndexesToDisable());
+		playerController.disableCorrectButtons();
 	}
 
 	public void addPlayerMoveToQue(Event e) {
