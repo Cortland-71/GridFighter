@@ -8,6 +8,9 @@
 	-borderGray:#303030;
 	-pictureBoxGray: #1c1c1c;
 	-green:#2dd838;
+	-lightGray: #3f3f3f;
+	-barRed: #bc1a2a;
+	-barOrange: #d68b35;
 }
 
 #enemyGrid Line, #playerGrid Line {
@@ -34,4 +37,35 @@
 
 #playerQueBox {
 	-fx-text-background-color: orange;
+}
+
+#enemyHpBar .track, #playerHpBar .track {
+	-fx-background-color: -borderGray;
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+   
+
+   
+}
+
+
+#enemyHpBar .bar, #playerHpBar .bar {
+	 -fx-background-color: -barRed;
+	 -fx-background-radius: 5;
+	 -fx-background-insets: 0;
+	 
+}
+
+#playerEgBar .track {
+	-fx-background-color: -borderGray;
+    -fx-background-radius: 3;
+    -fx-background-insets: 0;
+    
+}
+
+#playerEgBar .bar {
+	-fx-background-color: -barOrange;
+	 -fx-background-insets: 0;
+	 -fx-background-radius: 3;
+	 
 }

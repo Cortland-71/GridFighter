@@ -20,32 +20,27 @@ import javafx.scene.layout.HBox;
 
 public class FightController implements Initializable {
 
-	@FXML
-	GridPane enemyGrid;
-	@FXML
-	GridPane playerGrid;
+	@FXML GridPane enemyGrid;
+	@FXML GridPane playerGrid;
 
-	@FXML
-	Button attackButton;
-	@FXML
-	Button defendButton;
-	@FXML
-	Button stealButton;
-	@FXML
-	Button insureButton;
-	@FXML
-	Button healButton;
-	@FXML
-	Button executeButton;
+	@FXML Button attackButton;
+	@FXML Button defendButton;
+	@FXML Button stealButton;
+	@FXML Button insureButton;
+	@FXML Button healButton;
+	@FXML Button executeButton;
 
-	@FXML
-	ProgressBar playerHpBar;
-	@FXML
-	Label playerHpLabel;
-	@FXML
-	ProgressBar playerEgBar;
-	@FXML
-	Label playerEgLabel;
+	@FXML Label playerCashLabel;
+	@FXML ProgressBar playerHpBar;
+	@FXML Label playerHpLabel;
+	@FXML ProgressBar playerEgBar;
+	@FXML Label playerEgLabel;
+	
+	@FXML Label atkCostLabel;
+	@FXML Label defCostLabel;
+	@FXML Label stlCostLabel;
+	@FXML Label insCostLabel;
+	@FXML Label helCostLabel;
 
 	private PlayerController playerController;
 	private EnemyController enemyController;
@@ -56,17 +51,17 @@ public class FightController implements Initializable {
 		enemyController.setAllEnemyStats();
 
 		playerController = new PlayerController(enemyController);
-		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel);
+		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
+		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
+		
 		playerController.setAllPlayerStats();
 
 		executeButton.setDisable(true);
 		
 		System.out.println(enemyController.getButtonIndexesToDisable());
 	}
-	
-	
 
 	public void addPlayerMoveToQue(Event e) {
 		playerController.addPlayerMoveToQue(e);

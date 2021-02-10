@@ -19,29 +19,25 @@ public class PlayerController {
 
 	private Player player;
 
-	@FXML
-	GridPane playerGrid;
-	@FXML
-	ProgressBar playerHpBar;
-	@FXML
-	Label playerHpLabel;
-	@FXML
-	ProgressBar playerEgBar;
-	@FXML
-	Label playerEgLabel;
+	@FXML GridPane playerGrid;
+	@FXML Label playerCashLabel;
+	@FXML ProgressBar playerHpBar;
+	@FXML Label playerHpLabel;
+	@FXML ProgressBar playerEgBar;
+	@FXML Label playerEgLabel;
 
-	@FXML
-	Button attackButton;
-	@FXML
-	Button defendButton;
-	@FXML
-	Button stealButton;
-	@FXML
-	Button insureButton;
-	@FXML
-	Button healButton;
-	@FXML
-	Button executeButton;
+	@FXML Button attackButton;
+	@FXML Button defendButton;
+	@FXML Button stealButton;
+	@FXML Button insureButton;
+	@FXML Button healButton;
+	@FXML Button executeButton;
+	
+	@FXML Label atkCostLabel;
+	@FXML Label defCostLabel;
+	@FXML Label stlCostLabel;
+	@FXML Label insCostLabel;
+	@FXML Label helCostLabel;
 
 	private List<Button> playerButtonList;
 	private EnemyController enemyController;
@@ -52,12 +48,13 @@ public class PlayerController {
 	}
 	
 	public void setPlayerComponents(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
-			Label playerEgLabel) {
+			Label playerEgLabel, Label playerCashLabel) {
 		this.playerGrid = playerGrid;
 		this.playerHpBar = playerHpBar;
 		this.playerEgBar = playerEgBar;
 		this.playerHpLabel = playerHpLabel;
 		this.playerEgLabel = playerEgLabel;
+		this.playerCashLabel = playerCashLabel;
 	}
 
 	public void setPlayerButtons(Button attackButton, Button defendButton, Button stealButton, Button insureButton,
@@ -70,11 +67,14 @@ public class PlayerController {
 		this.executeButton = executeButton;
 		playerButtonList = new ArrayList<>(
 				Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
-
 	}
-
-	public Player getPlayer() {
-		return player;
+	
+	public void setPlayerCostLabels(Label atkCostLabel, Label defCostLabel, Label stlCostLabel, Label insCostLabel, Label helCostLabel) {
+		this.atkCostLabel = atkCostLabel;
+		this.defCostLabel = defCostLabel;
+		this.stlCostLabel = stlCostLabel;
+		this.insCostLabel = insCostLabel;
+		this.helCostLabel = helCostLabel;
 	}
 
 	public void addPlayerMoveToQue(Event e) {
@@ -96,8 +96,6 @@ public class PlayerController {
 		for (int index : currentIndexesToDisable) {
 			playerButtonList.get(index).setDisable(true);
 		}
-		
-		
 	}
 	
 	private void disableAllPlayerButtons(boolean state) {
@@ -105,14 +103,26 @@ public class PlayerController {
 	}
 
 	public void setAllPlayerStats() {
+		
+		playerCashLabel.setText("Cash: " + player.getCash());
 		playerHpBar.setProgress(player.getHp());
 		playerHpLabel.setText(Double.toString(player.getHp()));
 		playerEgBar.setProgress(player.getEg());
 		playerEgLabel.setText(Double.toString(player.getEg()));
+		
+		atkCostLabel.setText("ATK: " + player.getAtkCost());
+		defCostLabel.setText("DEF: " + player.getDefCost());
+		stlCostLabel.setText("STL: " + player.getStlCost());
+		insCostLabel.setText("INS: " + player.getInsCost());
+		helCostLabel.setText("HEL: $" + player.getHelCost());
+		
 	}
 	
 	public List<Button> getPlayerButtonList() {
 		return playerButtonList;
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
 }

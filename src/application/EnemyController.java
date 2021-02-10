@@ -55,7 +55,6 @@ public class EnemyController {
 			List<Integer> disableList = new ArrayList<>();
 			for(int num : list) {
 				if(num == 1 || num == 3) {
-					
 					disableList.add(num-1);
 				}
 			}

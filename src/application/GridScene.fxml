@@ -226,7 +226,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label text="Cash" />
+						<Label fx:id="playerCashLabel" text="Cash" />
 					</children>
 					<padding>
 						<Insets left="15.0" />
@@ -235,7 +235,7 @@
 				<HBox spacing="5.0">
 					<children>
 						<Label text="HP" />
-						<ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.0" />
+						<ProgressBar fx:id="playerHpBar" prefHeight="18.0" prefWidth="215.0" progress="0.46" />
 						<Label fx:id="playerHpLabel" text="Label" />
 					</children>
 					<padding>
@@ -257,11 +257,11 @@
 						<VBox prefHeight="153.0" prefWidth="150.0" spacing="5.0">
 							<children>
 								<Label text="COST" />
-								<Label text="ATK" />
-								<Label text="DEF" />
-								<Label text="STL" />
-								<Label text="INS" />
-								<Label text="HEL $" />
+								<Label fx:id="atkCostLabel" text="ATK" />
+								<Label fx:id="defCostLabel" text="DEF" />
+								<Label fx:id="stlCostLabel" text="STL" />
+								<Label fx:id="insCostLabel" text="INS" />
+								<Label fx:id="helCostLabel" text="HEL $" />
 							</children>
 							<padding>
 								<Insets left="15.0" />
@@ -302,10 +302,10 @@
 						<Insets left="15.0" />
 					</padding>
 				</HBox>
-				<HBox spacing="5.0">
+				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
 						<Label text="HP" />
-						<ProgressBar fx:id="enemyHPBar" prefWidth="250.0" progress="0.0" />
+						<ProgressBar fx:id="enemyHpBar" prefWidth="250.0" progress="0.44" />
 					</children>
 					<padding>
 						<Insets left="15.0" />
