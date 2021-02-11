@@ -42,11 +42,16 @@ public class PlayerController {
 
 	private List<Button> playerButtonList;
 	private List<Integer> currentIndexesToDisable;
+	private List<HBox> allPlayerHBox = new ArrayList<>();
 	private EnemyController enemyController;
 
 	public PlayerController(EnemyController enemyController) {
 		this.enemyController = enemyController;
 		player = new Player();
+	}
+	
+	public List<HBox> getAllPlayerHBox() {
+		return allPlayerHBox;
 	}
 	
 	public void setPlayerComponents(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
@@ -84,7 +89,7 @@ public class PlayerController {
 		box.setAlignment(Pos.CENTER);
 		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
 		playerGrid.add(box, 0, playerQueCounter++);
-		
+		allPlayerHBox.add(box);
 		if (playerQueCounter >= 10) {
 			for (Button b : playerButtonList)
 				b.setDisable(true);

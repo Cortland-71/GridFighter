@@ -8,15 +8,23 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 public class FightController implements Initializable {
 
@@ -67,5 +75,48 @@ public class FightController implements Initializable {
 
 	public void executeButtonPress() {
 
+		test();
+        
+        
+	}
+	
+	private void test() {
+		List<List<Integer>> allRedMoves = enemyController.getAllRedMoves();
+		System.out.println(allRedMoves);
+		
+		Timeline tl = new Timeline();
+        tl.setCycleCount(allRedMoves.size());
+        
+        KeyFrame keyFrame = new KeyFrame(Duration.millis(250),
+                new EventHandler<ActionEvent>() {
+        			int row = 0;
+                    public void handle(ActionEvent event) {
+                    	for(int i = 0; i < allRedMoves.get(row).size(); i++) {
+                    		enemyController.getAllEnemyHBox().get(row).get(allRedMoves.get(row).get(i)).setStyle("-fx-background-color: -darkRed;");
+                    	}
+                    	row++;
+                    }
+                });
+        
+        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(500),
+                new EventHandler<ActionEvent>() {
+        			int row = 0;
+		            public void handle(ActionEvent event) {
+		
+		               playerController.getAllPlayerHBox().get(row).setStyle("-fx-background-color: -darkRed;");
+		               row++;
+		            }
+        });
+
+        tl.getKeyFrames().addAll(keyFrame, keyFrame2);
+        
+        tl.setOnFinished(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				System.out.println("done");
+			}
+        });
+        tl.play();
 	}
 }

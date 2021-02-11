@@ -15,12 +15,18 @@ public class EnemyController {
 
 	private Enemy enemy;
 	private List<List<Integer>> buttonIndexesToDisable = new ArrayList<>();
-	List<List<Integer>> allRedMoves = new ArrayList<>();
+	private List<List<Integer>> allRedMoves = new ArrayList<>();
+	private List<List<HBox>> allEnemyHBox = new ArrayList<>();
+	
 	@FXML GridPane enemyGrid;
 
 	public EnemyController(GridPane enemyGrid) {
 		this.enemyGrid = enemyGrid;
 		enemy = new Enemy();
+	}
+	
+	public List<List<HBox>> getAllEnemyHBox() {
+		return allEnemyHBox;
 	}
 
 	public Enemy getEnemy() {
@@ -35,6 +41,7 @@ public class EnemyController {
 	private void populateGridWithEnemyMoves() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
 			List<Integer> currentRedMoves = new ArrayList<>();
+			List<HBox> hboxRowList = new ArrayList<>();
 			for (int j = 0; j < enemy.getEnemyMoveLists().get(i).size(); j++) {
 				int currentNum = enemy.getEnemyMoveLists().get(i).get(j);
 				HBox box = new HBox();
@@ -46,8 +53,10 @@ public class EnemyController {
 					currentRedMoves.add(j);
 				}
 				enemyGrid.add(box, j, i);
+				hboxRowList.add(box);
 			}
 			allRedMoves.add(currentRedMoves);
+			allEnemyHBox.add(hboxRowList);
 		}
 	}
 	
@@ -65,5 +74,9 @@ public class EnemyController {
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {
 		return buttonIndexesToDisable;
+	}
+	
+	public List<List<Integer>> getAllRedMoves() {
+		return allRedMoves;
 	}
 }
