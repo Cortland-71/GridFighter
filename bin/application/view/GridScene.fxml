@@ -189,6 +189,13 @@
 	<bottom>
 		<VBox prefHeight="161.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
 			<children>
+            <Region prefHeight="53.0" prefWidth="1080.0" />
+            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1080.0" spacing="10.0">
+               <children>
+                  <Button fx:id="nextRoundButton" mnemonicParsing="false" onAction="#startNextRound" prefWidth="100.0" text="Next Round" />
+                  <Label fx:id="roundLabel" text="Round" />
+               </children>
+            </HBox>
 				<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
 					<children>
 						<Button fx:id="attackButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="ATTACK" />
@@ -317,18 +324,13 @@
    <top>
       <HBox prefHeight="57.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="540.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="515.0">
                <children>
                   <Label text="Grid Fighter" />
                </children>
                <padding>
                   <Insets left="15.0" />
                </padding>
-            </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="540.0">
-               <children>
-                  <Label text="Round" />
-               </children>
             </VBox>
          </children>
       </HBox>

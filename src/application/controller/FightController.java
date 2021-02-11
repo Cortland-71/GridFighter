@@ -37,6 +37,7 @@ public class FightController implements Initializable {
 	@FXML Button insureButton;
 	@FXML Button healButton;
 	@FXML Button executeButton;
+	@FXML Button nextRoundButton;
 
 	@FXML Label playerCashLabel;
 	@FXML ProgressBar playerHpBar;
@@ -49,6 +50,8 @@ public class FightController implements Initializable {
 	@FXML Label stlCostLabel;
 	@FXML Label insCostLabel;
 	@FXML Label helCostLabel;
+	
+	@FXML Label roundLabel;
 
 	private PlayerController playerController;
 	private EnemyController enemyController;
@@ -56,6 +59,8 @@ public class FightController implements Initializable {
 	private KeyFrame playerGridKeyFrame;
 	private KeyFrame enemyGridKeyFrame;
 	private Timeline gridTimeLine;
+	
+	private static short roundNumber = 1;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -71,6 +76,8 @@ public class FightController implements Initializable {
 		playerController.setAllPlayerStats();
 
 		executeButton.setDisable(true);
+		nextRoundButton.setDisable(true);
+		roundLabel.setText("Round " + roundNumber);
 	}
 
 	public void addPlayerMoveToQue(Event e) {
@@ -78,6 +85,7 @@ public class FightController implements Initializable {
 	}
 
 	public void executeButtonPress() {
+		executeButton.setDisable(true);
 		runPlayerAndEnemyKeyFrames();
 	}
 	
@@ -122,8 +130,15 @@ public class FightController implements Initializable {
 		gridTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("done");
+				nextRoundButton.setDisable(false);
 			}
         });
 	}
+	
+	public void startNextRound() {
+		nextRoundButton.setDisable(true);
+		roundLabel.setText("Round " + ++roundNumber);
+	}
+	
+	
 }
