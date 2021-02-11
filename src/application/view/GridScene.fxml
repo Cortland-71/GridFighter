@@ -189,11 +189,6 @@
 	<bottom>
 		<VBox prefHeight="161.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
 			<children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-						<Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
-               </children>
-            </HBox>
 				<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
 					<children>
 						<Button fx:id="attackButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="ATTACK" />
@@ -208,7 +203,7 @@
 					<children>
 						<Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
 						<Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Button" />
+						<Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
 					</children>
 					<padding>
 						<Insets top="10.0" />
@@ -319,14 +314,23 @@
 			</children>
 		</VBox>
 	</left>
-	<top>
-		<VBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
-			<children>
-				<Label text="GRID FIGHTER" />
-			</children>
-			<padding>
-				<Insets left="20.0" />
-			</padding>
-		</VBox>
-	</top>
+   <top>
+      <HBox prefHeight="57.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="540.0">
+               <children>
+                  <Label text="Grid Fighter" />
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="540.0">
+               <children>
+                  <Label text="Round" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
