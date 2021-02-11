@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FightController">
+<BorderPane prefHeight="750.0" prefWidth="1080.0" stylesheets="@rootStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.FightController">
 	<center>
 		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
@@ -187,8 +187,13 @@
 		</HBox>
 	</center>
 	<bottom>
-		<VBox prefHeight="130.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+		<VBox prefHeight="161.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
 			<children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+						<Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
+               </children>
+            </HBox>
 				<HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
 					<children>
 						<Button fx:id="attackButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="ATTACK" />
@@ -203,7 +208,7 @@
 					<children>
 						<Button fx:id="insureButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="INSURE" />
 						<Button fx:id="healButton" mnemonicParsing="false" onAction="#addPlayerMoveToQue" prefHeight="30.0" prefWidth="150.0" text="HEAL" />
-						<Button fx:id="executeButton" mnemonicParsing="false" onAction="#executeButtonPress" prefHeight="30.0" prefWidth="150.0" text="EXECUTE" />
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Button" />
 					</children>
 					<padding>
 						<Insets top="10.0" />

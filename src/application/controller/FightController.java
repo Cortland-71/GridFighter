@@ -52,6 +52,10 @@ public class FightController implements Initializable {
 
 	private PlayerController playerController;
 	private EnemyController enemyController;
+	
+	private KeyFrame playerGridKeyFrame;
+	private KeyFrame enemyGridKeyFrame;
+	private Timeline gridTimeLine;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -74,49 +78,52 @@ public class FightController implements Initializable {
 	}
 
 	public void executeButtonPress() {
-
-		test();
-        
-        
+		runPlayerAndEnemyKeyFrames();
 	}
 	
-	private void test() {
+	private void getEnemyGridKeyFrame() {
 		List<List<Integer>> allRedMoves = enemyController.getAllRedMoves();
-		System.out.println(allRedMoves);
-		
-		Timeline tl = new Timeline();
-        tl.setCycleCount(allRedMoves.size());
-        
-        KeyFrame keyFrame = new KeyFrame(Duration.millis(250),
+		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
                 new EventHandler<ActionEvent>() {
         			int row = 0;
                     public void handle(ActionEvent event) {
                     	for(int i = 0; i < allRedMoves.get(row).size(); i++) {
-                    		enemyController.getAllEnemyHBox().get(row).get(allRedMoves.get(row).get(i)).setStyle("-fx-background-color: -darkRed;");
+                    		enemyController.getAllEnemyHBox().get(row).get(allRedMoves.get(row).get(i))
+                    		.setStyle("-fx-background-color: -darkRed;");
                     	}
                     	row++;
                     }
                 });
-        
-        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(500),
+	}
+	
+	private void getPlayerGridKeyFrame() {
+		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
         			int row = 0;
 		            public void handle(ActionEvent event) {
-		
-		               playerController.getAllPlayerHBox().get(row).setStyle("-fx-background-color: -darkRed;");
+		               playerController.getAllPlayerHBox().get(row)
+		               .setStyle("-fx-background-color: -darkRed;");
 		               row++;
 		            }
         });
-
-        tl.getKeyFrames().addAll(keyFrame, keyFrame2);
-        
-        tl.setOnFinished(new EventHandler<ActionEvent>() {
-
+	}
+	
+	private void runPlayerAndEnemyKeyFrames() {
+		gridTimeLine = new Timeline();
+        gridTimeLine.setCycleCount(enemyController.getAllRedMoves().size());
+        getEnemyGridKeyFrame();
+        getPlayerGridKeyFrame();
+        getAfterGridKeyFrames();
+        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
+        gridTimeLine.play();
+	}
+	
+	private void getAfterGridKeyFrames() {
+		gridTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
 				System.out.println("done");
 			}
         });
-        tl.play();
 	}
 }

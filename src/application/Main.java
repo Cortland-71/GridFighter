@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("view/GridScene.fxml"));
-			Scene scene = new Scene(root,1080,720);
+			Scene scene = new Scene(root,1080,750);
 			scene.getStylesheets().add(getClass().getResource("view/rootStyle.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
