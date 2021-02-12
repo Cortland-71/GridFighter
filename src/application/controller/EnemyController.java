@@ -35,12 +35,13 @@ public class EnemyController {
 
 	public void setAllEnemyStats() {
 		populateGridWithEnemyMoves();
+		setEnemyMoveLabelToRed();
 		createButtonIndexesToBeDisabled();
 	}
 
 	private void populateGridWithEnemyMoves() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
-			List<Integer> currentRedMoves = new ArrayList<>();
+			
 			List<HBox> hboxRowList = new ArrayList<>();
 			for (int j = 0; j < enemy.getEnemyMoveLists().get(i).size(); j++) {
 				int currentNum = enemy.getEnemyMoveLists().get(i).get(j);
@@ -48,15 +49,27 @@ public class EnemyController {
 				Label numLabel = new Label(Integer.toString(currentNum));
 				box.setAlignment(Pos.CENTER);
 				box.getChildren().add(numLabel);
-				if (currentNum == Collections.max(enemy.getEnemyMoveLists().get(i))) {
-					numLabel.setStyle("-fx-text-fill: red;");
-					currentRedMoves.add(j);
-				}
+
 				enemyGrid.add(box, j, i);
 				hboxRowList.add(box);
 			}
-			allRedMoves.add(currentRedMoves);
+			
 			allEnemyHBox.add(hboxRowList);
+		}
+	}
+	
+	public void setEnemyMoveLabelToRed() {
+		for(int i = 0; i < allEnemyHBox.size(); i++) {
+			List<Integer> redMoves = new ArrayList<>();
+			for(int j = 0; j < allEnemyHBox.get(i).size(); j++) {
+				Label hboxLabel = ((Label)allEnemyHBox.get(i).get(j).getChildren().get(0));
+				if(Integer.parseInt(hboxLabel.getText()) == enemy.getSortedEnemyMoveLists().get(i).get(FightController.roundNumber-1)) {
+					hboxLabel.setStyle("-fx-text-fill: red;");
+					redMoves.add(j);
+				}
+			}
+			allRedMoves.add(redMoves);
+			
 		}
 	}
 	

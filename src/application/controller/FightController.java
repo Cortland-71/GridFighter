@@ -60,7 +60,7 @@ public class FightController implements Initializable {
 	private KeyFrame enemyGridKeyFrame;
 	private Timeline gridTimeLine;
 	
-	private static short roundNumber = 1;
+	public static short roundNumber = 1;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -97,7 +97,9 @@ public class FightController implements Initializable {
                     public void handle(ActionEvent event) {
                     	for(int i = 0; i < allRedMoves.get(row).size(); i++) {
                     		enemyController.getAllEnemyHBox().get(row).get(allRedMoves.get(row).get(i))
-                    		.setStyle("-fx-background-color: -darkRed;");
+                    		.setStyle("-fx-background-color: -borderGray;");
+                    		((Label)enemyController.getAllEnemyHBox().get(row).get(allRedMoves.get(row).get(i))
+                    				.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
                     	}
                     	row++;
                     }
@@ -110,7 +112,7 @@ public class FightController implements Initializable {
         			int row = 0;
 		            public void handle(ActionEvent event) {
 		               playerController.getAllPlayerHBox().get(row)
-		               .setStyle("-fx-background-color: -darkRed;");
+		               .setStyle("-fx-background-color: -borderGray;");
 		               row++;
 		            }
         });
@@ -138,6 +140,9 @@ public class FightController implements Initializable {
 	public void startNextRound() {
 		nextRoundButton.setDisable(true);
 		roundLabel.setText("Round " + ++roundNumber);
+		enemyController.setEnemyMoveLabelToRed();
+		
+		
 	}
 	
 	
