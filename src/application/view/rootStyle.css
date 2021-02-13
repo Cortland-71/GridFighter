@@ -14,6 +14,7 @@
 	-darkRed: #601112;
 }
 
+
 #enemyGrid Line, #playerGrid Line {
 	-fx-stroke: -borderGray;
 }

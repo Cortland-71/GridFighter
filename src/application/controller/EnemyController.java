@@ -33,15 +33,13 @@ public class EnemyController {
 		return enemy;
 	}
 
-	public void setAllEnemyStats() {
-		populateGridWithEnemyMoves();
+	public void setEnemyGridToPlayable() {
 		setEnemyMoveLabelToRed();
-		createButtonIndexesToBeDisabled();
+		setButtonIndexesToBeDisabled();
 	}
 
-	private void populateGridWithEnemyMoves() {
+	public void populateGridWithEnemyMoves() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
-			
 			List<HBox> hboxRowList = new ArrayList<>();
 			for (int j = 0; j < enemy.getEnemyMoveLists().get(i).size(); j++) {
 				int currentNum = enemy.getEnemyMoveLists().get(i).get(j);
@@ -49,16 +47,15 @@ public class EnemyController {
 				Label numLabel = new Label(Integer.toString(currentNum));
 				box.setAlignment(Pos.CENTER);
 				box.getChildren().add(numLabel);
-
 				enemyGrid.add(box, j, i);
 				hboxRowList.add(box);
 			}
-			
 			allEnemyHBox.add(hboxRowList);
 		}
 	}
 	
 	public void setEnemyMoveLabelToRed() {
+		allRedMoves.clear();
 		for(int i = 0; i < allEnemyHBox.size(); i++) {
 			List<Integer> redMoves = new ArrayList<>();
 			for(int j = 0; j < allEnemyHBox.get(i).size(); j++) {
@@ -73,7 +70,8 @@ public class EnemyController {
 		}
 	}
 	
-	private void createButtonIndexesToBeDisabled() {
+	public void setButtonIndexesToBeDisabled() {
+		buttonIndexesToDisable.clear();
 		for(List<Integer> list : allRedMoves) {
 			List<Integer> disableList = new ArrayList<>();
 			for(int num : list) {

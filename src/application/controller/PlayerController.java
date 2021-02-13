@@ -8,6 +8,7 @@ import application.model.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -16,7 +17,7 @@ import javafx.scene.layout.HBox;
 
 public class PlayerController {
 
-	private static int playerQueCounter = 0;
+	public static int playerQueCounter = 0;
 
 	private Player player;
 
@@ -134,4 +135,12 @@ public class PlayerController {
 	public Player getPlayer() {
 		return player;
 	}
+	
+	public void clearPlayerGrid() {
+		Node node = playerGrid.getChildren().get(0);
+		playerGrid.getChildren().clear();
+		playerGrid.getChildren().add(0,node);
+	}
+	
+	
 }

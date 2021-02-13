@@ -65,7 +65,8 @@ public class FightController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		enemyController = new EnemyController(enemyGrid);
-		enemyController.setAllEnemyStats();
+		enemyController.populateGridWithEnemyMoves();
+		enemyController.setEnemyGridToPlayable();
 
 		playerController = new PlayerController(enemyController);
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
@@ -139,11 +140,11 @@ public class FightController implements Initializable {
 	
 	public void startNextRound() {
 		nextRoundButton.setDisable(true);
+		PlayerController.playerQueCounter = 0;
+		
 		roundLabel.setText("Round " + ++roundNumber);
-		enemyController.setEnemyMoveLabelToRed();
-		
-		
+		enemyController.setEnemyGridToPlayable();
+		playerController.disableCorrectButtons();
+		playerController.clearPlayerGrid();
 	}
-	
-	
 }
