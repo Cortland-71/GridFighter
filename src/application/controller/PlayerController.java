@@ -84,17 +84,14 @@ public class PlayerController {
 	}
 
 	public void addPlayerMoveToQue(Event e) {
-//		HBox box = new HBox();
-//		box.setAlignment(Pos.CENTER);
-//		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
-//		playerGrid.add(box, 0, playerQueCounter++);
-//		allPlayerHBox.add(box);
-		if (playerQueCounter >= 10) {
+		enemyController.addPlayerMoveToQue(e);
+		if (playerQueCounter >= enemyController.getActivePlayerQueIndexes().size()) {
 			for (Button b : playerButtonList)
 				b.setDisable(true);
 			executeButton.setDisable(false);
 			return;
 		}
+		
 		disableCorrectButtons();
 	}
 	

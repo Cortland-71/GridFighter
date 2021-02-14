@@ -1,7 +1,7 @@
 package application.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import application.model.Enemy;
@@ -17,8 +17,9 @@ public class EnemyController {
 
 	private Enemy enemy;
 	private List<List<Integer>> buttonIndexesToDisable = new ArrayList<>();
-	private List<List<Integer>> allRedMoves = new ArrayList<>();
+	private List<List<Integer>> allRedMoveIndexes = new ArrayList<>();
 	private List<List<HBox>> allEnemyHBox = new ArrayList<>();
+	private List<Integer> activePlayerQueIndexes = new ArrayList<>();
 	
 	@FXML GridPane enemyGrid;
 	private PlayerController playerController;
@@ -71,10 +72,9 @@ public class EnemyController {
 		}
 	}
 	
-	
-	
 	public void setEnemyMoveLabelToRed() {
-		allRedMoves.clear();
+		allRedMoveIndexes.clear();
+		activePlayerQueIndexes.clear();
 		for(int i = 0; i < allEnemyHBox.size(); i++) {
 			List<Integer> redMoves = new ArrayList<>();
 			for(int j = 0; j < allEnemyHBox.get(i).size(); j++) {
@@ -83,17 +83,19 @@ public class EnemyController {
 				if(Integer.parseInt(hboxLabel.getText()) == enemy.getSortedEnemyMoveLists().get(i).get(0)) {
 					hboxLabel.setStyle("-fx-text-fill: red;");
 					redMoves.add(j);
+					activePlayerQueIndexes.add(i);
+					HashSet<Integer> set = new HashSet<>(activePlayerQueIndexes);
+					activePlayerQueIndexes = new ArrayList<>(set);
+					//System.out.println("EnemyController: activePlayerQueIndexes: " + activePlayerQueIndexes);
 				}
 			}
-			allRedMoves.add(redMoves);
+			allRedMoveIndexes.add(redMoves);
 		}
 	}
 	
-	
-	
 	public void setButtonIndexesToBeDisabled() {
 		buttonIndexesToDisable.clear();
-		for(List<Integer> list : allRedMoves) {
+		for(List<Integer> list : allRedMoveIndexes) {
 			List<Integer> disableList = new ArrayList<>();
 			for(int num : list) {
 				if(num == 1 || num == 3) {
@@ -115,9 +117,8 @@ public class EnemyController {
 		HBox box = new HBox();
 		box.setAlignment(Pos.CENTER);
 		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
-		
-//		playerController.getPlayerGrid().add(box, 0, playerQueCounter++);
-//		allPlayerHBox.add(box);
+		playerController.getPlayerGrid().add(box, 0, activePlayerQueIndexes.get(PlayerController.playerQueCounter++));
+		playerController.getAllPlayerHBox().add(box);
 	}
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {
@@ -125,6 +126,10 @@ public class EnemyController {
 	}
 	
 	public List<List<Integer>> getAllRedMoves() {
-		return allRedMoves;
+		return allRedMoveIndexes;
+	}
+	
+	public List<Integer> getActivePlayerQueIndexes() {
+		return activePlayerQueIndexes;
 	}
 }
