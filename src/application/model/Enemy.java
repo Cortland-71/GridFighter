@@ -24,7 +24,7 @@ public class Enemy extends Person {
 
 	public Enemy() {
 		createEnemyMoveLists();
-		sortEnemyMoveLists();
+		createSortedEnemyMoveLists();
 	}
 
 	private void createEnemyMoveLists() {
@@ -38,7 +38,7 @@ public class Enemy extends Person {
 		}
 	}
 	
-	public void sortEnemyMoveLists() {
+	public void createSortedEnemyMoveLists() {
 		List<Integer> currentList;
 		for(List<Integer> list : enemyMoveLists) {
 			Set<Integer> set = new HashSet<>(list);

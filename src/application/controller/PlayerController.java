@@ -51,9 +51,7 @@ public class PlayerController {
 		player = new Player();
 	}
 	
-	public List<HBox> getAllPlayerHBox() {
-		return allPlayerHBox;
-	}
+	
 	
 	public void setPlayerComponents(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
 			Label playerEgLabel, Label playerCashLabel) {
@@ -86,11 +84,11 @@ public class PlayerController {
 	}
 
 	public void addPlayerMoveToQue(Event e) {
-		HBox box = new HBox();
-		box.setAlignment(Pos.CENTER);
-		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
-		playerGrid.add(box, 0, playerQueCounter++);
-		allPlayerHBox.add(box);
+//		HBox box = new HBox();
+//		box.setAlignment(Pos.CENTER);
+//		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
+//		playerGrid.add(box, 0, playerQueCounter++);
+//		allPlayerHBox.add(box);
 		if (playerQueCounter >= 10) {
 			for (Button b : playerButtonList)
 				b.setDisable(true);
@@ -142,5 +140,12 @@ public class PlayerController {
 		playerGrid.getChildren().add(0,node);
 	}
 	
+	public GridPane getPlayerGrid() {
+		return playerGrid;
+	}
+	
+	public List<HBox> getAllPlayerHBox() {
+		return allPlayerHBox;
+	}
 	
 }

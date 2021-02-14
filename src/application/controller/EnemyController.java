@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 import application.model.Enemy;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -19,10 +21,16 @@ public class EnemyController {
 	private List<List<HBox>> allEnemyHBox = new ArrayList<>();
 	
 	@FXML GridPane enemyGrid;
+	private PlayerController playerController;
 
 	public EnemyController(GridPane enemyGrid) {
 		this.enemyGrid = enemyGrid;
+		
 		enemy = new Enemy();
+	}
+	
+	public void setPlayerController(PlayerController playerController) {
+		this.playerController = playerController;
 	}
 	
 	public List<List<HBox>> getAllEnemyHBox() {
@@ -39,21 +47,13 @@ public class EnemyController {
 		removeHighestMoveFromSortedList();
 	}
 	
-	private void removeHighestMoveFromSortedList() {
-		for(List<Integer> list : enemy.getSortedEnemyMoveLists()) {
-			if(!list.isEmpty()) list.remove(0);
-		}
-	}
-
-	public void populateGridWithEnemyMoves() {
+	
+	public void populateEnemyGridWithHBoxsAndAddThemToList() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
 			List<HBox> hboxRowList = new ArrayList<>();
 			for (int j = 0; j < enemy.getEnemyMoveLists().get(i).size(); j++) {
-				int currentNum = enemy.getEnemyMoveLists().get(i).get(j);
 				HBox box = new HBox();
-				Label numLabel = new Label(Integer.toString(currentNum));
 				box.setAlignment(Pos.CENTER);
-				box.getChildren().add(numLabel);
 				enemyGrid.add(box, j, i);
 				hboxRowList.add(box);
 			}
@@ -61,8 +61,19 @@ public class EnemyController {
 		}
 	}
 	
+	public void populateHBoxsWithEnemyMoveLabels() {
+		for (int i = 0; i < allEnemyHBox.size(); i++) {
+			for (int j = 0; j < allEnemyHBox.get(i).size(); j++) {
+				int currentNum = enemy.getEnemyMoveLists().get(i).get(j);
+				Label numLabel = new Label(Integer.toString(currentNum));
+				allEnemyHBox.get(i).get(j).getChildren().add(numLabel);
+			}
+		}
+	}
+	
+	
+	
 	public void setEnemyMoveLabelToRed() {
-		System.out.println(enemy.getSortedEnemyMoveLists());
 		allRedMoves.clear();
 		for(int i = 0; i < allEnemyHBox.size(); i++) {
 			List<Integer> redMoves = new ArrayList<>();
@@ -78,6 +89,8 @@ public class EnemyController {
 		}
 	}
 	
+	
+	
 	public void setButtonIndexesToBeDisabled() {
 		buttonIndexesToDisable.clear();
 		for(List<Integer> list : allRedMoves) {
@@ -89,6 +102,22 @@ public class EnemyController {
 			}
 			buttonIndexesToDisable.add(disableList);
 		}
+	}
+	
+	private void removeHighestMoveFromSortedList() {
+		for(List<Integer> list : enemy.getSortedEnemyMoveLists()) {
+			if(!list.isEmpty()) list.remove(0);
+		}
+	}
+
+	
+	public void addPlayerMoveToQue(Event e) {
+		HBox box = new HBox();
+		box.setAlignment(Pos.CENTER);
+		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
+		
+//		playerController.getPlayerGrid().add(box, 0, playerQueCounter++);
+//		allPlayerHBox.add(box);
 	}
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {

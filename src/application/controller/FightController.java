@@ -64,17 +64,21 @@ public class FightController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		enemyController = new EnemyController(enemyGrid);
-		enemyController.populateGridWithEnemyMoves();
-		enemyController.setEnemyGridToPlayable();
-
+		
 		playerController = new PlayerController(enemyController);
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
-		playerController.disableCorrectButtons();
+		//playerController.disableCorrectButtons();
 		playerController.setAllPlayerStats();
+		
+		enemyController.setPlayerController(playerController);
+		enemyController.populateEnemyGridWithHBoxsAndAddThemToList();
+		enemyController.populateHBoxsWithEnemyMoveLabels();
+		enemyController.setEnemyGridToPlayable();
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
