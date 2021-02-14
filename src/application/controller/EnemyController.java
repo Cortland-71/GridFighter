@@ -48,7 +48,6 @@ public class EnemyController {
 		removeHighestMoveFromSortedList();
 	}
 	
-	
 	public void populateEnemyGridWithHBoxsAndAddThemToList() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
 			List<HBox> hboxRowList = new ArrayList<>();
@@ -84,8 +83,7 @@ public class EnemyController {
 					hboxLabel.setStyle("-fx-text-fill: red;");
 					redMoves.add(j);
 					activePlayerQueIndexes.add(i);
-					HashSet<Integer> set = new HashSet<>(activePlayerQueIndexes);
-					activePlayerQueIndexes = new ArrayList<>(set);
+					activePlayerQueIndexes = FightController.getNonDupList(activePlayerQueIndexes);
 					//System.out.println("EnemyController: activePlayerQueIndexes: " + activePlayerQueIndexes);
 				}
 			}
@@ -111,7 +109,6 @@ public class EnemyController {
 			if(!list.isEmpty()) list.remove(0);
 		}
 	}
-
 	
 	public void addPlayerMoveToQue(Event e) {
 		HBox box = new HBox();
@@ -120,6 +117,8 @@ public class EnemyController {
 		playerController.getPlayerGrid().add(box, 0, activePlayerQueIndexes.get(PlayerController.playerQueCounter++));
 		playerController.getAllPlayerHBox().add(box);
 	}
+	
+	
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {
 		return buttonIndexesToDisable;

@@ -9,6 +9,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import application.controller.FightController;
+
 public class Enemy extends Person {
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();
 	private List<List<Integer>> sortedEnemyMoveLists = new ArrayList<>();
@@ -41,8 +43,7 @@ public class Enemy extends Person {
 	public void createSortedEnemyMoveLists() {
 		List<Integer> currentList;
 		for(List<Integer> list : enemyMoveLists) {
-			Set<Integer> set = new HashSet<>(list);
-			currentList = new ArrayList<>(set);
+			currentList = FightController.getNonDupList(list);
 			Collections.sort(currentList);
 			Collections.reverse(currentList);
 			sortedEnemyMoveLists.add(currentList);

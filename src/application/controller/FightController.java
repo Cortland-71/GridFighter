@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -150,5 +151,10 @@ public class FightController implements Initializable {
 		enemyController.setEnemyGridToPlayable();
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
+	}
+	
+	public static <T> List<T> getNonDupList(List<T> list) {
+		HashSet<T> set = new HashSet<>(list);
+		return new ArrayList<>(set);
 	}
 }
