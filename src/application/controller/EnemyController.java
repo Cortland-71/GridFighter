@@ -41,12 +41,6 @@ public class EnemyController {
 	public Enemy getEnemy() {
 		return enemy;
 	}
-
-	public void setEnemyGridToPlayable() {
-		setEnemyMoveLabelToRed();
-		setButtonIndexesToBeDisabled();
-		removeHighestMoveFromSortedList();
-	}
 	
 	public void populateEnemyGridWithHBoxsAndAddThemToList() {
 		for (int i = 0; i < enemy.getEnemyMoveLists().size(); i++) {
@@ -104,7 +98,7 @@ public class EnemyController {
 		}
 	}
 	
-	private void removeHighestMoveFromSortedList() {
+	public void removeHighestMoveFromSortedList() {
 		for(List<Integer> list : enemy.getSortedEnemyMoveLists()) {
 			if(!list.isEmpty()) list.remove(0);
 		}

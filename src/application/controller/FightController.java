@@ -67,19 +67,22 @@ public class FightController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		enemyController = new EnemyController(enemyGrid);
+		enemyController.populateEnemyGridWithHBoxsAndAddThemToList();
+		enemyController.populateHBoxsWithEnemyMoveLabels();
+		enemyController.setEnemyMoveLabelToRed();
+		enemyController.setButtonIndexesToBeDisabled();
+		enemyController.removeHighestMoveFromSortedList();
 		
 		playerController = new PlayerController(enemyController);
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
-		//playerController.disableCorrectButtons();
+		playerController.disableCorrectButtons();
 		playerController.setAllPlayerStats();
 		
 		enemyController.setPlayerController(playerController);
-		enemyController.populateEnemyGridWithHBoxsAndAddThemToList();
-		enemyController.populateHBoxsWithEnemyMoveLabels();
-		enemyController.setEnemyGridToPlayable();
+		
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
@@ -95,6 +98,7 @@ public class FightController implements Initializable {
 		runPlayerAndEnemyKeyFrames();
 	}
 	
+	//HBox indexes are wrong
 	private void getEnemyGridKeyFrame() {
 		List<List<Integer>> allRedMoves = enemyController.getAllRedMoves();
 		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
@@ -112,6 +116,7 @@ public class FightController implements Initializable {
                 });
 	}
 	
+	//HBox indexes are wrong
 	private void getPlayerGridKeyFrame() {
 		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
@@ -146,9 +151,11 @@ public class FightController implements Initializable {
 	public void startNextRound() {
 		nextRoundButton.setDisable(true);
 		PlayerController.playerQueCounter = 0;
-		
+		playerController.getAllPlayerHBox().clear();
 		roundLabel.setText("Round " + ++roundNumber);
-		enemyController.setEnemyGridToPlayable();
+		enemyController.setEnemyMoveLabelToRed();
+		enemyController.setButtonIndexesToBeDisabled();
+		enemyController.removeHighestMoveFromSortedList();
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
 	}
