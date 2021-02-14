@@ -36,6 +36,13 @@ public class EnemyController {
 	public void setEnemyGridToPlayable() {
 		setEnemyMoveLabelToRed();
 		setButtonIndexesToBeDisabled();
+		removeHighestMoveFromSortedList();
+	}
+	
+	private void removeHighestMoveFromSortedList() {
+		for(List<Integer> list : enemy.getSortedEnemyMoveLists()) {
+			if(!list.isEmpty()) list.remove(0);
+		}
 	}
 
 	public void populateGridWithEnemyMoves() {
@@ -55,18 +62,19 @@ public class EnemyController {
 	}
 	
 	public void setEnemyMoveLabelToRed() {
+		System.out.println(enemy.getSortedEnemyMoveLists());
 		allRedMoves.clear();
 		for(int i = 0; i < allEnemyHBox.size(); i++) {
 			List<Integer> redMoves = new ArrayList<>();
 			for(int j = 0; j < allEnemyHBox.get(i).size(); j++) {
+				if(enemy.getSortedEnemyMoveLists().get(i).isEmpty()) continue;
 				Label hboxLabel = ((Label)allEnemyHBox.get(i).get(j).getChildren().get(0));
-				if(Integer.parseInt(hboxLabel.getText()) == enemy.getSortedEnemyMoveLists().get(i).get(FightController.roundNumber-1)) {
+				if(Integer.parseInt(hboxLabel.getText()) == enemy.getSortedEnemyMoveLists().get(i).get(0)) {
 					hboxLabel.setStyle("-fx-text-fill: red;");
 					redMoves.add(j);
 				}
 			}
 			allRedMoves.add(redMoves);
-			
 		}
 	}
 	
