@@ -100,22 +100,32 @@ public class FightController implements Initializable {
 	
 	int col = 0;
 	private void getEnemyGridKeyFrame() {
-		List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(col);
-		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
+		
+		enemyGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
+					
                     public void handle(ActionEvent event) {
+                    	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(col);
+//                    	while(activeEnemyHBoxes.isEmpty()) {
+//                    		col++;
+//                    		activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(col);
+//                    	}
+
                     	for(HBox box : activeEnemyHBoxes) {
                     		box.setStyle("-fx-background-color: -borderGray;");
                     		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
                     	}
-                    	if(!activeEnemyHBoxes.isEmpty()) col++;
+                    	
+                    	col++;
+                    	System.out.println(col);
+                    	
                     }
                 });
 	}
 	
 	//HBox indexes are wrong
 	private void getPlayerGridKeyFrame() {
-		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
+		playerGridKeyFrame = new KeyFrame(Duration.millis(1000),
                 new EventHandler<ActionEvent>() {
         			int row = 0;
 		            public void handle(ActionEvent event) {
@@ -128,11 +138,12 @@ public class FightController implements Initializable {
 	
 	private void runPlayerAndEnemyKeyFrames() {
 		gridTimeLine = new Timeline();
-        gridTimeLine.setCycleCount(enemyController.getAllRedMoveIndexes().size());
+        gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
         getEnemyGridKeyFrame();
-        getPlayerGridKeyFrame();
+        //getPlayerGridKeyFrame();
         getAfterGridKeyFrames();
-        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
+        //gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
+        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame);
         gridTimeLine.play();
 	}
 	

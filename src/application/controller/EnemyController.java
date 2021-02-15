@@ -3,6 +3,7 @@ package application.controller;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import application.model.Enemy;
 import javafx.event.Event;
@@ -120,8 +121,7 @@ public class EnemyController {
 			}
 			activeHBoxList.add(hboxList);
 		}
-		System.out.println(activeHBoxList);
-		return activeHBoxList;
+		return activeHBoxList.stream().filter(e->!e.isEmpty()).collect(Collectors.toList());
 	}
 	
 	
