@@ -143,9 +143,8 @@ public class FightController implements Initializable {
 			@Override
 			public void handle(ActionEvent arg0) {
 				nextRoundButton.setDisable(false);
-				if(roundNumber > 0) {
-					System.out.println("Done");
-					changeScene(new ActionEvent());
+				if(roundNumber > 4) {
+					nextRoundButton.setText("Finish");
 				}
 			}
         });
@@ -154,13 +153,10 @@ public class FightController implements Initializable {
 	public void changeScene(ActionEvent event) {
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("test.fxml"));
-			
 			Scene scene = new Scene(root);
-	
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 			window.setScene(scene);
 			window.show();
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,7 +164,12 @@ public class FightController implements Initializable {
 
 	}
 	
-	public void startNextRound() {
+	public void startNextRound(ActionEvent e) {
+		if(roundNumber > 5) {
+			System.out.println("Done");
+			changeScene(e);
+			return;
+		}
 		nextRoundButton.setDisable(true);
 		PlayerController.playerQueCounter = 0;
 		playerController.getActivePlayerHBoxes().clear();
@@ -178,6 +179,7 @@ public class FightController implements Initializable {
 		enemyController.removeHighestMoveFromSortedList();
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
+		
 	}
 	
 	public static <T> List<T> getNonDupList(List<T> list) {
