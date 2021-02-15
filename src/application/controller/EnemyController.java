@@ -78,7 +78,6 @@ public class EnemyController {
 					redMoves.add(j);
 					activePlayerQueIndexes.add(i);
 					activePlayerQueIndexes = FightController.getNonDupList(activePlayerQueIndexes);
-					//System.out.println("EnemyController: activePlayerQueIndexes: " + activePlayerQueIndexes);
 				}
 			}
 			allRedMoveIndexes.add(redMoves);
@@ -112,13 +111,25 @@ public class EnemyController {
 		playerController.getAllPlayerHBox().add(box);
 	}
 	
+	public List<List<HBox>> getActiveEnemyHBoxes() {
+		List<List<HBox>> activeHBoxList = new ArrayList<>();
+		for(int i = 0; i < allRedMoveIndexes.size(); i++) {
+			List<HBox> hboxList = new ArrayList<>();
+			for(int index : allRedMoveIndexes.get(i)) {
+				hboxList.add(allEnemyHBox.get(i).get(index));
+			}
+			activeHBoxList.add(hboxList);
+		}
+		System.out.println(activeHBoxList);
+		return activeHBoxList;
+	}
 	
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {
 		return buttonIndexesToDisable;
 	}
 	
-	public List<List<Integer>> getAllRedMoves() {
+	public List<List<Integer>> getAllRedMoveIndexes() {
 		return allRedMoveIndexes;
 	}
 	
