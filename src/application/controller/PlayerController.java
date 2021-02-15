@@ -80,8 +80,6 @@ public class PlayerController {
 		this.insCostLabel = insCostLabel;
 		this.helCostLabel = helCostLabel;
 	}
-	
-	
 
 	public void addPlayerMoveToQue(Event e) {
 		createActivePlayerHBoxes(e);
@@ -91,7 +89,6 @@ public class PlayerController {
 			executeButton.setDisable(false);
 			return;
 		}
-		
 		disableCorrectButtons();
 	}
 	
@@ -128,7 +125,6 @@ public class PlayerController {
 		stlCostLabel.setText("STL: " + player.getStlCost());
 		insCostLabel.setText("INS: " + player.getInsCost());
 		helCostLabel.setText("HEL: $" + player.getHelCost());
-		
 	}
 	
 	public List<Button> getPlayerButtonList() {

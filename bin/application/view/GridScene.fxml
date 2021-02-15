@@ -318,6 +318,7 @@
 						<Insets left="15.0" />
 					</padding>
 				</HBox>
+            <Button mnemonicParsing="false" onAction="#changeScene" text="Button" />
 			</children>
 		</VBox>
 	</left>
