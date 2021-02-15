@@ -104,13 +104,7 @@ public class EnemyController {
 		}
 	}
 	
-	public void addPlayerMoveToQue(Event e) {
-		HBox box = new HBox();
-		box.setAlignment(Pos.CENTER);
-		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
-		playerController.getPlayerGrid().add(box, 0, activePlayerQueIndexes.get(PlayerController.playerQueCounter++));
-		playerController.getAllPlayerHBox().add(box);
-	}
+	
 	
 	public List<List<HBox>> getActiveEnemyHBoxes() {
 		List<List<HBox>> activeHBoxList = new ArrayList<>();

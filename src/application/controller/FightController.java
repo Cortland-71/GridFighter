@@ -98,40 +98,32 @@ public class FightController implements Initializable {
 		runPlayerAndEnemyKeyFrames();
 	}
 	
-	int col = 0;
+	
 	private void getEnemyGridKeyFrame() {
 		
-		enemyGridKeyFrame = new KeyFrame(Duration.millis(500),
+		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
                 new EventHandler<ActionEvent>() {
-					
+					int enemyHBoxListIndex = 0;
                     public void handle(ActionEvent event) {
-                    	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(col);
-//                    	while(activeEnemyHBoxes.isEmpty()) {
-//                    		col++;
-//                    		activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(col);
-//                    	}
-
+                    	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(enemyHBoxListIndex);
                     	for(HBox box : activeEnemyHBoxes) {
                     		box.setStyle("-fx-background-color: -borderGray;");
                     		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
                     	}
-                    	
-                    	col++;
-                    	System.out.println(col);
-                    	
+                    	enemyHBoxListIndex++;
                     }
                 });
 	}
 	
 	//HBox indexes are wrong
 	private void getPlayerGridKeyFrame() {
-		playerGridKeyFrame = new KeyFrame(Duration.millis(1000),
+		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
-        			int row = 0;
+        			int playerHBoxListIndex = 0;
 		            public void handle(ActionEvent event) {
-		               playerController.getAllPlayerHBox().get(row)
+		               playerController.getActivePlayerHBoxes().get(playerHBoxListIndex)
 		               .setStyle("-fx-background-color: -borderGray;");
-		               row++;
+		               playerHBoxListIndex++;
 		            }
         });
 	}
@@ -140,10 +132,9 @@ public class FightController implements Initializable {
 		gridTimeLine = new Timeline();
         gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
         getEnemyGridKeyFrame();
-        //getPlayerGridKeyFrame();
+        getPlayerGridKeyFrame();
         getAfterGridKeyFrames();
-        //gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
-        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame);
+        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
         gridTimeLine.play();
 	}
 	
@@ -152,7 +143,6 @@ public class FightController implements Initializable {
 			@Override
 			public void handle(ActionEvent arg0) {
 				nextRoundButton.setDisable(false);
-				col = 0;
 			}
         });
 	}
@@ -160,7 +150,7 @@ public class FightController implements Initializable {
 	public void startNextRound() {
 		nextRoundButton.setDisable(true);
 		PlayerController.playerQueCounter = 0;
-		playerController.getAllPlayerHBox().clear();
+		playerController.getActivePlayerHBoxes().clear();
 		roundLabel.setText("Round " + ++roundNumber);
 		enemyController.setEnemyMoveLabelToRed();
 		enemyController.setButtonIndexesToBeDisabled();

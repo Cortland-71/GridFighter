@@ -43,15 +43,13 @@ public class PlayerController {
 
 	private List<Button> playerButtonList;
 	
-	private List<HBox> allPlayerHBox = new ArrayList<>();
+	private List<HBox> activePlayerHBoxes = new ArrayList<>();
 	private EnemyController enemyController;
 
 	public PlayerController(EnemyController enemyController) {
 		this.enemyController = enemyController;
 		player = new Player();
 	}
-	
-	
 	
 	public void setPlayerComponents(GridPane playerGrid, ProgressBar playerHpBar, ProgressBar playerEgBar, Label playerHpLabel,
 			Label playerEgLabel, Label playerCashLabel) {
@@ -82,9 +80,11 @@ public class PlayerController {
 		this.insCostLabel = insCostLabel;
 		this.helCostLabel = helCostLabel;
 	}
+	
+	
 
 	public void addPlayerMoveToQue(Event e) {
-		enemyController.addPlayerMoveToQue(e);
+		createActivePlayerHBoxes(e);
 		if (playerQueCounter >= enemyController.getActivePlayerQueIndexes().size()) {
 			for (Button b : playerButtonList)
 				b.setDisable(true);
@@ -93,6 +93,14 @@ public class PlayerController {
 		}
 		
 		disableCorrectButtons();
+	}
+	
+	private void createActivePlayerHBoxes(Event e) {
+		HBox box = new HBox();
+		box.setAlignment(Pos.CENTER);
+		box.getChildren().add(new Label(((Button) e.getSource()).getText()));
+		getPlayerGrid().add(box, 0, enemyController.getActivePlayerQueIndexes().get(playerQueCounter++));
+		activePlayerHBoxes.add(box);
 	}
 	
 	public void disableCorrectButtons() {
@@ -141,8 +149,8 @@ public class PlayerController {
 		return playerGrid;
 	}
 	
-	public List<HBox> getAllPlayerHBox() {
-		return allPlayerHBox;
+	public List<HBox> getActivePlayerHBoxes() {
+		return activePlayerHBoxes;
 	}
 	
 }
