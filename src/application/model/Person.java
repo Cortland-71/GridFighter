@@ -2,7 +2,7 @@ package application.model;
 
 public class Person {
 
-	private double hp = .5;
+	private double hp = 1;
 	private double cash = 500;
 	
 	public double getCash() {

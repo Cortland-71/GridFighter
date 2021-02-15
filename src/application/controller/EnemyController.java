@@ -11,10 +11,14 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class EnemyController {
+	
+	@FXML ProgressBar enemyHpBar;
+	@FXML Label enemyHpLabel;
 
 	private Enemy enemy;
 	private List<List<Integer>> buttonIndexesToDisable = new ArrayList<>();
@@ -29,6 +33,11 @@ public class EnemyController {
 		this.enemyGrid = enemyGrid;
 		
 		enemy = new Enemy();
+	}
+	
+	public void setEnemyComponents(ProgressBar enemyHpBar, Label enemyHpLabel) {
+		this.enemyHpBar = enemyHpBar;
+		this.enemyHpLabel = enemyHpLabel;
 	}
 	
 	public void setPlayerController(PlayerController playerController) {
@@ -118,6 +127,11 @@ public class EnemyController {
 		return activeHBoxList.stream().filter(e->!e.isEmpty()).collect(Collectors.toList());
 	}
 	
+	
+	public void updateAllEnemyStats() {
+		enemyHpBar.setProgress(enemy.getHp());
+		enemyHpLabel.setText(Double.toString(enemy.getHp()));
+	}
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {
 		return buttonIndexesToDisable;

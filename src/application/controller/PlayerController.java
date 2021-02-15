@@ -112,7 +112,7 @@ public class PlayerController {
 		for(Button b : playerButtonList) b.setDisable(state);
 	}
 
-	public void setAllPlayerStats() {
+	public void updateAllPlayerStats() {
 		
 		playerCashLabel.setText("Cash: " + player.getCash());
 		playerHpBar.setProgress(player.getHp());

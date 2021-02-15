@@ -312,13 +312,13 @@
 				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
 						<Label text="HP" />
-						<ProgressBar fx:id="enemyHpBar" prefWidth="250.0" progress="0.44" />
+						<ProgressBar fx:id="enemyHpBar" prefWidth="215.0" progress="0.44" />
+                  <Label fx:id="enemyHpLabel" text="Label" />
 					</children>
 					<padding>
 						<Insets left="15.0" />
 					</padding>
 				</HBox>
-            <Button mnemonicParsing="false" onAction="#changeScene" text="Button" />
 			</children>
 		</VBox>
 	</left>

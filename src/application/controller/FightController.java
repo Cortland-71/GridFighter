@@ -3,10 +3,14 @@ package application.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Attack;
+import application.Fireable;
+import application.model.Person;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -16,7 +20,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -46,6 +49,9 @@ public class FightController implements Initializable {
 	@FXML ProgressBar playerEgBar;
 	@FXML Label playerEgLabel;
 	
+	@FXML ProgressBar enemyHpBar;
+	@FXML Label enemyHpLabel;
+	
 	@FXML Label atkCostLabel;
 	@FXML Label defCostLabel;
 	@FXML Label stlCostLabel;
@@ -67,11 +73,13 @@ public class FightController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		enemyController = new EnemyController(enemyGrid);
+		enemyController.setEnemyComponents(enemyHpBar, enemyHpLabel);
 		enemyController.populateEnemyGridWithHBoxsAndAddThemToList();
 		enemyController.populateHBoxsWithEnemyMoveLabels();
 		enemyController.setEnemyMoveLabelToRed();
 		enemyController.setButtonIndexesToBeDisabled();
 		enemyController.removeHighestMoveFromSortedList();
+		enemyController.updateAllEnemyStats();
 		
 		playerController = new PlayerController(enemyController);
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
@@ -79,10 +87,9 @@ public class FightController implements Initializable {
 				executeButton);
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
 		playerController.disableCorrectButtons();
-		playerController.setAllPlayerStats();
+		playerController.updateAllPlayerStats();
 		
 		enemyController.setPlayerController(playerController);
-		
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
@@ -98,6 +105,14 @@ public class FightController implements Initializable {
 		runPlayerAndEnemyKeyFrames();
 	}
 	
+	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack()));
+	
+	private void fire(Person personAttacking, Person personBeingAttacked) {
+		for(Fireable move : fireableList) {
+			move.fire(personAttacking, personBeingAttacked);
+		}
+	}
+	
 	
 	private void getEnemyGridKeyFrame() {
 		
@@ -111,6 +126,9 @@ public class FightController implements Initializable {
                     		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
                     	}
                     	enemyHBoxListIndex++;
+                    	
+                    	fire(enemyController.getEnemy(), playerController.getPlayer());
+                    	updateAllStats();
                     }
                 });
 	}
@@ -124,8 +142,16 @@ public class FightController implements Initializable {
 		               playerController.getActivePlayerHBoxes().get(playerHBoxListIndex)
 		               .setStyle("-fx-background-color: -borderGray;");
 		               playerHBoxListIndex++;
+		               
+		               fire(playerController.getPlayer(), enemyController.getEnemy());
+	                   updateAllStats();
 		            }
         });
+	}
+	
+	private void updateAllStats() {
+		enemyController.updateAllEnemyStats();
+        playerController.updateAllPlayerStats();
 	}
 	
 	private void runPlayerAndEnemyKeyFrames() {
@@ -161,7 +187,6 @@ public class FightController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void startNextRound(ActionEvent e) {
