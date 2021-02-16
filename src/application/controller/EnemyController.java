@@ -28,7 +28,6 @@ public class EnemyController {
 	
 	@FXML GridPane enemyGrid;
 
-
 	public EnemyController(GridPane enemyGrid) {
 		this.enemyGrid = enemyGrid;
 		
@@ -39,8 +38,6 @@ public class EnemyController {
 		this.enemyHpBar = enemyHpBar;
 		this.enemyHpLabel = enemyHpLabel;
 	}
-	
-
 	
 	public List<List<HBox>> getAllEnemyHBox() {
 		return allEnemyHBox;
@@ -111,8 +108,6 @@ public class EnemyController {
 		}
 	}
 	
-	
-	
 	public List<List<HBox>> getActiveEnemyHBoxes() {
 		List<List<HBox>> activeHBoxList = new ArrayList<>();
 		for(int i = 0; i < allRedMoveIndexes.size(); i++) {
@@ -129,21 +124,15 @@ public class EnemyController {
 	public void updateAllEnemyStats() {
 		enemyHpBar.setProgress(enemy.getHp());
 		enemyHpLabel.setText(Double.toString(enemy.getHp()));
-		
 	}
 	
 	public void setAllEffects(int index) {
-		enemy.setAtkEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(0).getChildren().get(0)).getText()) / 100);
-		enemy.setDefEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(1).getChildren().get(0)).getText()) / 100);
-		enemy.setStlEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(2).getChildren().get(0)).getText()) / 100);
-		enemy.setInsEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(3).getChildren().get(0)).getText()) / 100);
-		enemy.setHelEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(4).getChildren().get(0)).getText()) / 100);
-		
-		System.out.println("atk effect:" + enemy.getAtkEffect());
-		System.out.println("def effect:" + enemy.getDefEffect());
-		System.out.println("stl effect:" + enemy.getStlEffect());
-		System.out.println("ins effect:" + enemy.getInsEffect());
-		System.out.println("hel effect:" + enemy.getHelEffect());
+		List<Double> amounts = new ArrayList<>();
+		for(int i = 0; i<5; i++) {
+			double amount = Double.parseDouble(((Label)allEnemyHBox.get(index).get(i).getChildren().get(0)).getText()) / 100;
+			amounts.add(amount);
+		}
+		enemy.setAllEffects(amounts);
 	}
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {

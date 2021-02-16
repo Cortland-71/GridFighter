@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import application.controller.FightController;
+import javafx.scene.control.Label;
 
 public class Enemy extends Person {
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();

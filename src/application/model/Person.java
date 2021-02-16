@@ -1,5 +1,7 @@
 package application.model;
 
+import java.util.List;
+
 public class Person {
 
 	private double hp = 1;
@@ -10,6 +12,20 @@ public class Person {
 	private double stlEffect = .05;
 	private double insEffect = .05;
 	private double helEffect = .05;
+	
+	public void setAllEffects(List<Double> amounts) {
+		setAtkEffect(amounts.get(0));
+		setDefEffect(amounts.get(1));
+		setStlEffect(amounts.get(2));
+		setInsEffect(amounts.get(3));
+		setHelEffect(amounts.get(4));
+		
+		System.out.println("atk effect:" + getAtkEffect());
+		System.out.println("def effect:" + getDefEffect());
+		System.out.println("stl effect:" + getStlEffect());
+		System.out.println("ins effect:" + getInsEffect());
+		System.out.println("hel effect:" + getHelEffect());
+	}
 	
 	public double getCash() {
 		return cash;

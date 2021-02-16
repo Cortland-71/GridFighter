@@ -112,28 +112,26 @@ public class FightController implements Initializable {
 		}
 	}
 	
-	
 	private void getEnemyGridKeyFrame() {
 		
 		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
-                new EventHandler<ActionEvent>() {
-					int enemyHBoxListIndex = 0;
-                    public void handle(ActionEvent event) {
-                    	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(enemyHBoxListIndex);
-                    	for(HBox box : activeEnemyHBoxes) {
-                    		box.setStyle("-fx-background-color: -borderGray;");
-                    		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
-                    	}
-                    	enemyHBoxListIndex++;
-                    	System.out.println(enemyController.getActivePlayerQueIndexes());
-                    	//fire(enemyController.getEnemy(), playerController.getPlayer());
-                    	updateAllStats();
-                    	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
-                    }
-                });
+	        new EventHandler<ActionEvent>() {
+				int enemyHBoxListIndex = 0;
+	            public void handle(ActionEvent event) {
+	            	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(enemyHBoxListIndex);
+	            	for(HBox box : activeEnemyHBoxes) {
+	            		box.setStyle("-fx-background-color: -borderGray;");
+	            		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
+	            	}
+	            	enemyHBoxListIndex++;
+	            	System.out.println(enemyController.getActivePlayerQueIndexes());
+	            	//fire(enemyController.getEnemy(), playerController.getPlayer());
+	            	updateAllStats();
+	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
+	            }
+	        });
 	}
 	
-	//HBox indexes are wrong
 	private void getPlayerGridKeyFrame() {
 		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
