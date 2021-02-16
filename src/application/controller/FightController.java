@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Attack;
+import application.Defend;
 import application.Fireable;
+import application.Heal;
+import application.Insure;
+import application.Steal;
 import application.model.Person;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -104,11 +108,17 @@ public class FightController implements Initializable {
 		runPlayerAndEnemyKeyFrames();
 	}
 	
-	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack()));
+	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
 	
-	private void fire(Person personAttacking, Person personBeingAttacked) {
-		for(Fireable move : fireableList) {
-			move.fire(personAttacking, personBeingAttacked);
+	private void fire(Person personAttacking, Person personBeingAttacked, int rowIndex) {
+		System.out.println("\nRow " + rowIndex);
+		for(int index : enemyController.getAllRedMoveIndexes().get(rowIndex)) {
+			System.out.println("Index: " + index);
+			for(Fireable move : fireableList) {
+				if(move.getMoveId() == index) {
+					move.fire(personAttacking, personBeingAttacked);
+				}
+			}
 		}
 	}
 	
@@ -124,8 +134,7 @@ public class FightController implements Initializable {
 	            		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
 	            	}
 	            	enemyHBoxListIndex++;
-	            	System.out.println(enemyController.getActivePlayerQueIndexes());
-	            	fire(enemyController.getEnemy(), playerController.getPlayer());
+	            	fire(enemyController.getEnemy(), playerController.getPlayer(), enemyHBoxListIndex-1);
 	            	updateAllStats();
 	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
 	            }
@@ -166,6 +175,7 @@ public class FightController implements Initializable {
 		gridTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+				System.out.println("-----------------------------");
 				nextRoundButton.setDisable(false);
 				if(roundNumber > 4) {
 					nextRoundButton.setText("Finish");

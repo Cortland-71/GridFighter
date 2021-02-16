@@ -20,11 +20,11 @@ public class Person {
 		setInsEffect(amounts.get(3));
 		setHelEffect(amounts.get(4));
 		
-		System.out.println("atk effect:" + getAtkEffect());
-		System.out.println("def effect:" + getDefEffect());
-		System.out.println("stl effect:" + getStlEffect());
-		System.out.println("ins effect:" + getInsEffect());
-		System.out.println("hel effect:" + getHelEffect());
+//		System.out.println("atk effect:" + getAtkEffect());
+//		System.out.println("def effect:" + getDefEffect());
+//		System.out.println("stl effect:" + getStlEffect());
+//		System.out.println("ins effect:" + getInsEffect());
+//		System.out.println("hel effect:" + getHelEffect());
 	}
 	
 	public double getCash() {
