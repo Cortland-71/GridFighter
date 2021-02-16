@@ -80,6 +80,7 @@ public class FightController implements Initializable {
 		enemyController.setButtonIndexesToBeDisabled();
 		enemyController.removeHighestMoveFromSortedList();
 		enemyController.updateAllEnemyStats();
+		enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(0));
 		
 		playerController = new PlayerController(enemyController);
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
@@ -88,8 +89,6 @@ public class FightController implements Initializable {
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
 		playerController.disableCorrectButtons();
 		playerController.updateAllPlayerStats();
-		
-		enemyController.setPlayerController(playerController);
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
@@ -126,9 +125,10 @@ public class FightController implements Initializable {
                     		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
                     	}
                     	enemyHBoxListIndex++;
-                    	
-                    	fire(enemyController.getEnemy(), playerController.getPlayer());
+                    	System.out.println(enemyController.getActivePlayerQueIndexes());
+                    	//fire(enemyController.getEnemy(), playerController.getPlayer());
                     	updateAllStats();
+                    	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
                     }
                 });
 	}
@@ -143,7 +143,7 @@ public class FightController implements Initializable {
 		               .setStyle("-fx-background-color: -borderGray;");
 		               playerHBoxListIndex++;
 		               
-		               fire(playerController.getPlayer(), enemyController.getEnemy());
+		               //fire(playerController.getPlayer(), enemyController.getEnemy());
 	                   updateAllStats();
 		            }
         });
@@ -184,13 +184,12 @@ public class FightController implements Initializable {
 			window.setScene(scene);
 			window.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public void startNextRound(ActionEvent e) {
-		if(roundNumber > 5) {
+		if(roundNumber > 4) {
 			System.out.println("Done");
 			changeScene(e);
 			return;

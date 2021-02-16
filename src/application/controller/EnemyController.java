@@ -22,12 +22,12 @@ public class EnemyController {
 
 	private Enemy enemy;
 	private List<List<Integer>> buttonIndexesToDisable = new ArrayList<>();
-	private List<List<Integer>> allRedMoveIndexes = new ArrayList<>();
 	private List<List<HBox>> allEnemyHBox = new ArrayList<>();
+	private List<List<Integer>> allRedMoveIndexes = new ArrayList<>();
 	private List<Integer> activePlayerQueIndexes = new ArrayList<>();
 	
 	@FXML GridPane enemyGrid;
-	private PlayerController playerController;
+
 
 	public EnemyController(GridPane enemyGrid) {
 		this.enemyGrid = enemyGrid;
@@ -40,9 +40,7 @@ public class EnemyController {
 		this.enemyHpLabel = enemyHpLabel;
 	}
 	
-	public void setPlayerController(PlayerController playerController) {
-		this.playerController = playerController;
-	}
+
 	
 	public List<List<HBox>> getAllEnemyHBox() {
 		return allEnemyHBox;
@@ -131,6 +129,21 @@ public class EnemyController {
 	public void updateAllEnemyStats() {
 		enemyHpBar.setProgress(enemy.getHp());
 		enemyHpLabel.setText(Double.toString(enemy.getHp()));
+		
+	}
+	
+	public void setAllEffects(int index) {
+		enemy.setAtkEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(0).getChildren().get(0)).getText()) / 100);
+		enemy.setDefEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(1).getChildren().get(0)).getText()) / 100);
+		enemy.setStlEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(2).getChildren().get(0)).getText()) / 100);
+		enemy.setInsEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(3).getChildren().get(0)).getText()) / 100);
+		enemy.setHelEffect(Double.parseDouble(((Label)allEnemyHBox.get(index).get(4).getChildren().get(0)).getText()) / 100);
+		
+		System.out.println("atk effect:" + enemy.getAtkEffect());
+		System.out.println("def effect:" + enemy.getDefEffect());
+		System.out.println("stl effect:" + enemy.getStlEffect());
+		System.out.println("ins effect:" + enemy.getInsEffect());
+		System.out.println("hel effect:" + enemy.getHelEffect());
 	}
 	
 	public List<List<Integer>> getButtonIndexesToDisable() {

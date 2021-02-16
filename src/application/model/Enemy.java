@@ -49,4 +49,6 @@ public class Enemy extends Person {
 			sortedEnemyMoveLists.add(currentList);
 		}
 	}
+	
+	
 }
