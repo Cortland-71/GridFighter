@@ -116,9 +116,9 @@ public class PlayerController {
 		
 		playerCashLabel.setText("Cash: " + player.getCash());
 		playerHpBar.setProgress(player.getHp());
-		playerHpLabel.setText(Double.toString(player.getHp()));
+		playerHpLabel.setText(String.format("%,.2f", player.getHp()));
 		playerEgBar.setProgress(player.getEg());
-		playerEgLabel.setText(Double.toString(player.getEg()));
+		playerEgLabel.setText(String.format("%,.2f", player.getEg()));
 		
 		atkCostLabel.setText("ATK: " + player.getAtkCost());
 		defCostLabel.setText("DEF: " + player.getDefCost());

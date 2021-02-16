@@ -125,7 +125,7 @@ public class FightController implements Initializable {
 	            	}
 	            	enemyHBoxListIndex++;
 	            	System.out.println(enemyController.getActivePlayerQueIndexes());
-	            	//fire(enemyController.getEnemy(), playerController.getPlayer());
+	            	fire(enemyController.getEnemy(), playerController.getPlayer());
 	            	updateAllStats();
 	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
 	            }

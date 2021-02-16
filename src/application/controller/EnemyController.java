@@ -123,7 +123,7 @@ public class EnemyController {
 	
 	public void updateAllEnemyStats() {
 		enemyHpBar.setProgress(enemy.getHp());
-		enemyHpLabel.setText(Double.toString(enemy.getHp()));
+		enemyHpLabel.setText(String.format("%,.2f", enemy.getHp()));
 	}
 	
 	public void setAllEffects(int index) {

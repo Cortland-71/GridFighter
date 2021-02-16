@@ -8,10 +8,7 @@ public class Attack implements Fireable {
 
 	@Override
 	public void fire(Person personAttacking, Person personBeingAttacked) {
-		personBeingAttacked.setHp(personBeingAttacked.getHp() - .1);
-		System.out.println("Attack: personAttacking: " + personAttacking + " damage: " + 
-				" personBeingAttacked: " + personBeingAttacked + 
-				"");
+		personBeingAttacked.setHp(personBeingAttacked.getHp() - personAttacking.getAtkEffect());
 	}
 
 	@Override
