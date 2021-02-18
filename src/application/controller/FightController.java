@@ -109,17 +109,14 @@ public class FightController implements Initializable {
 	}
 	
 	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
-	
-	private void fire(Person personAttacking, Person personBeingAttacked, int rowIndex) {
-		System.out.println("\nRow " + rowIndex);
-		for(int index : enemyController.getAllRedMoveIndexes().get(rowIndex)) {
-			System.out.println("Index: " + index);
-			for(Fireable move : fireableList) {
-				if(move.getMoveId() == index) {
-					move.fire(personAttacking, personBeingAttacked);
-				}
-			}
+	int i = 0;
+	private void fire(Person personAttacking, Person personBeingAttacked) {
+		
+		System.out.println(enemyController.getAllRedMoveIndexes().get(i));
+		for(int index : enemyController.getAllRedMoveIndexes().get(i)) {
+			fireableList.get(index).fire(enemyController.getEnemy(), playerController.getPlayer());
 		}
+		i++;
 	}
 	
 	private void getEnemyGridKeyFrame() {
@@ -134,7 +131,7 @@ public class FightController implements Initializable {
 	            		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
 	            	}
 	            	enemyHBoxListIndex++;
-	            	fire(enemyController.getEnemy(), playerController.getPlayer(), enemyHBoxListIndex-1);
+	            	fire(enemyController.getEnemy(), playerController.getPlayer());
 	            	updateAllStats();
 	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
 	            }
@@ -177,6 +174,7 @@ public class FightController implements Initializable {
 			public void handle(ActionEvent arg0) {
 				System.out.println("-----------------------------");
 				nextRoundButton.setDisable(false);
+				i=0;
 				if(roundNumber > 4) {
 					nextRoundButton.setText("Finish");
 				}
