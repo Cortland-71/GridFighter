@@ -109,14 +109,15 @@ public class FightController implements Initializable {
 	}
 	
 	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
-	int i = 0;
+	
+	int redMoveListIndex = 0;
 	private void fire(Person personAttacking, Person personBeingAttacked) {
-		
-		System.out.println(enemyController.getAllRedMoveIndexes().get(i));
-		for(int index : enemyController.getAllRedMoveIndexes().get(i)) {
+		while(enemyController.getAllRedMoveIndexes().get(redMoveListIndex).isEmpty()) redMoveListIndex++;
+		System.out.println(enemyController.getAllRedMoveIndexes().get(redMoveListIndex));
+		for(int index : enemyController.getAllRedMoveIndexes().get(redMoveListIndex)) {
 			fireableList.get(index).fire(enemyController.getEnemy(), playerController.getPlayer());
 		}
-		i++;
+		redMoveListIndex++;
 	}
 	
 	private void getEnemyGridKeyFrame() {
@@ -174,7 +175,7 @@ public class FightController implements Initializable {
 			public void handle(ActionEvent arg0) {
 				System.out.println("-----------------------------");
 				nextRoundButton.setDisable(false);
-				i=0;
+				redMoveListIndex=0;
 				if(roundNumber > 4) {
 					nextRoundButton.setText("Finish");
 				}
