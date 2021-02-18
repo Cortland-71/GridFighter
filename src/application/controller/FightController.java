@@ -111,13 +111,23 @@ public class FightController implements Initializable {
 	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
 	
 	int redMoveListIndex = 0;
-	private void fire(Person personAttacking, Person personBeingAttacked) {
+	private void enemyFire(Person personAttacking, Person personBeingAttacked) {
 		while(enemyController.getAllRedMoveIndexes().get(redMoveListIndex).isEmpty()) redMoveListIndex++;
 		System.out.println(enemyController.getAllRedMoveIndexes().get(redMoveListIndex));
 		for(int index : enemyController.getAllRedMoveIndexes().get(redMoveListIndex)) {
+			System.out.println("enemy: ****");
 			fireableList.get(index).fire(enemyController.getEnemy(), playerController.getPlayer());
 		}
 		redMoveListIndex++;
+	}
+	
+	int playerActiveIndex = 0;
+	private void playerFire() {
+		System.out.println("player: ****");
+		String labelText = ((Label)playerController.getActivePlayerHBoxes().get(playerActiveIndex++).getChildren().get(0)).getText();
+		System.out.println("Player box text: " + labelText);
+		
+		
 	}
 	
 	private void getEnemyGridKeyFrame() {
@@ -132,7 +142,7 @@ public class FightController implements Initializable {
 	            		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
 	            	}
 	            	enemyHBoxListIndex++;
-	            	fire(enemyController.getEnemy(), playerController.getPlayer());
+	            	enemyFire(enemyController.getEnemy(), playerController.getPlayer());
 	            	updateAllStats();
 	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
 	            }
@@ -148,7 +158,7 @@ public class FightController implements Initializable {
 		               .setStyle("-fx-background-color: -borderGray;");
 		               playerHBoxListIndex++;
 		               
-		               //fire(playerController.getPlayer(), enemyController.getEnemy());
+		               playerFire();
 	                   updateAllStats();
 		            }
         });
@@ -176,6 +186,7 @@ public class FightController implements Initializable {
 				System.out.println("-----------------------------");
 				nextRoundButton.setDisable(false);
 				redMoveListIndex=0;
+				playerActiveIndex=0;
 				if(roundNumber > 4) {
 					nextRoundButton.setText("Finish");
 				}

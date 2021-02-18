@@ -4,7 +4,6 @@ import application.model.Person;
 
 public class Attack implements Fireable {
 	
-	private int id = 0;
 
 	@Override
 	public void fire(Person personAttacking, Person personBeingAttacked) {
@@ -13,8 +12,9 @@ public class Attack implements Fireable {
 	}
 
 	@Override
-	public int getMoveId() {
-		return id;
+	public String getId() {
+		return "ATTACK";
 	}
+
 
 }
