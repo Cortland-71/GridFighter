@@ -8,13 +8,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import application.Attack;
-import application.Defend;
-import application.Fireable;
-import application.Heal;
-import application.Insure;
-import application.Steal;
 import application.model.Person;
+import application.model.moves.Attack;
+import application.model.moves.Defend;
+import application.model.moves.Fireable;
+import application.model.moves.Heal;
+import application.model.moves.Insure;
+import application.model.moves.Steal;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -126,6 +126,13 @@ public class FightController implements Initializable {
 		System.out.println("player: ****");
 		String labelText = ((Label)playerController.getActivePlayerHBoxes().get(playerActiveIndex++).getChildren().get(0)).getText();
 		System.out.println("Player box text: " + labelText);
+		for(Fireable move : fireableList) {
+			if(labelText.equals(move.getId())) {
+				move.fire(playerController.getPlayer(), enemyController.getEnemy());
+			}
+			
+		}
+		
 		
 		
 	}

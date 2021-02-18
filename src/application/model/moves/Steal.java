@@ -1,18 +1,19 @@
-package application;
+package application.model.moves;
 
 import application.model.Person;
 
-public class Heal implements Fireable {
+public class Steal implements Fireable {
 
 
 	@Override
 	public void fire(Person person1, Person person2) {
-		System.out.println("Heal");
+		System.out.println("Steal");
+		
 	}
 
 	@Override
 	public String getId() {
-		return "HEAL";
+		return "STEAL";
 	}
 
 }
