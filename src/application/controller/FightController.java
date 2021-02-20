@@ -113,9 +113,7 @@ public class FightController implements Initializable {
 	int redMoveListIndex = 0;
 	private void enemyFire(Person personAttacking, Person personBeingAttacked) {
 		while(enemyController.getAllRedMoveIndexes().get(redMoveListIndex).isEmpty()) redMoveListIndex++;
-		System.out.println(enemyController.getAllRedMoveIndexes().get(redMoveListIndex));
 		for(int index : enemyController.getAllRedMoveIndexes().get(redMoveListIndex)) {
-			System.out.println("enemy: ****");
 			fireableList.get(index).fire(enemyController.getEnemy(), playerController.getPlayer());
 		}
 		redMoveListIndex++;
@@ -123,18 +121,12 @@ public class FightController implements Initializable {
 	
 	int playerActiveIndex = 0;
 	private void playerFire() {
-		System.out.println("player: ****");
 		String labelText = ((Label)playerController.getActivePlayerHBoxes().get(playerActiveIndex++).getChildren().get(0)).getText();
-		System.out.println("Player box text: " + labelText);
 		for(Fireable move : fireableList) {
 			if(labelText.equals(move.getId())) {
 				move.fire(playerController.getPlayer(), enemyController.getEnemy());
 			}
-			
 		}
-		
-		
-		
 	}
 	
 	private void getEnemyGridKeyFrame() {
