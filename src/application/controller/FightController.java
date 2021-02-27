@@ -193,6 +193,8 @@ public class FightController implements Initializable {
         });
 	}
 	
+	//test
+	
 	public void changeScene(ActionEvent event) {
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("ResultScene.fxml"));
