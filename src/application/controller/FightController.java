@@ -195,7 +195,7 @@ public class FightController implements Initializable {
 	
 	public void changeScene(ActionEvent event) {
 		try {
-			BorderPane root = FXMLLoader.load(getClass().getResource("test.fxml"));
+			BorderPane root = FXMLLoader.load(getClass().getResource("ResultScene.fxml"));
 			Scene scene = new Scene(root);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 			window.setScene(scene);
