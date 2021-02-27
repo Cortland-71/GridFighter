@@ -67,11 +67,17 @@ public class FightController implements Initializable {
 	private PlayerController playerController;
 	private EnemyController enemyController;
 	
+	private EndGameController endGameController;
+	
 	private KeyFrame playerGridKeyFrame;
 	private KeyFrame enemyGridKeyFrame;
 	private Timeline gridTimeLine;
 	
 	public static short roundNumber = 1;
+	
+	public Button getNextRoundButton() {
+		return this.nextRoundButton;
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -93,10 +99,20 @@ public class FightController implements Initializable {
 		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
 		playerController.disableCorrectButtons();
 		playerController.updateAllPlayerStats();
+		
+		endGameController = new EndGameController(this);
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
 		roundLabel.setText("Round " + roundNumber);
+	}
+	
+	public PlayerController getPlayerController() {
+		return this.playerController;
+	}
+	
+	public EnemyController getEnemyController() {
+		return this.enemyController;
 	}
 
 	public void addPlayerMoveToQue(Event e) {
@@ -149,12 +165,7 @@ public class FightController implements Initializable {
 	        });
 	}
 	
-	private boolean someoneDied() {
-		if(playerController.getPlayer().getHp() <= 0 || enemyController.getEnemy().getHp() <= 0) {
-			return true;
-		}
-		return false;
-	}
+	
 	
 	private void getPlayerGridKeyFrame() {
 		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
@@ -194,33 +205,14 @@ public class FightController implements Initializable {
 				nextRoundButton.setDisable(false);
 				redMoveListIndex=0;
 				playerActiveIndex=0;
-				if(roundNumber > 4 || someoneDied()) {
-					nextRoundButton.setText("Finish");
-				}
+				if(roundNumber > 4) nextRoundButton.setText("Finish");
+				
 			}
         });
 	}
 	
-	//test
-	
-	public void changeScene(ActionEvent event) {
-		try {
-			BorderPane root = FXMLLoader.load(getClass().getResource("ResultScene.fxml"));
-			Scene scene = new Scene(root);
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-			window.setScene(scene);
-			window.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void startNextRound(ActionEvent e) {
-		if(roundNumber > 4 || someoneDied()) {
-			System.out.println("Done");
-			changeScene(e);
-			return;
-		}
+		endGameController.setFinishButton(e);
 		nextRoundButton.setDisable(true);
 		PlayerController.playerQueCounter = 0;
 		playerController.getActivePlayerHBoxes().clear();
