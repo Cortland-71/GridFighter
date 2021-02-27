@@ -144,8 +144,16 @@ public class FightController implements Initializable {
 	            	enemyFire(enemyController.getEnemy(), playerController.getPlayer());
 	            	updateAllStats();
 	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
+	            	
 	            }
 	        });
+	}
+	
+	private boolean someoneDied() {
+		if(playerController.getPlayer().getHp() <= 0 || enemyController.getEnemy().getHp() <= 0) {
+			return true;
+		}
+		return false;
 	}
 	
 	private void getPlayerGridKeyFrame() {
@@ -186,7 +194,7 @@ public class FightController implements Initializable {
 				nextRoundButton.setDisable(false);
 				redMoveListIndex=0;
 				playerActiveIndex=0;
-				if(roundNumber > 4) {
+				if(roundNumber > 4 || someoneDied()) {
 					nextRoundButton.setText("Finish");
 				}
 			}
@@ -208,7 +216,7 @@ public class FightController implements Initializable {
 	}
 	
 	public void startNextRound(ActionEvent e) {
-		if(roundNumber > 4) {
+		if(roundNumber > 4 || someoneDied()) {
 			System.out.println("Done");
 			changeScene(e);
 			return;
