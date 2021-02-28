@@ -146,7 +146,6 @@ public class FightController implements Initializable {
 	}
 	
 	private void getEnemyGridKeyFrame() {
-		
 		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
 	        new EventHandler<ActionEvent>() {
 				int enemyHBoxListIndex = 0;
@@ -164,8 +163,6 @@ public class FightController implements Initializable {
 	            }
 	        });
 	}
-	
-	
 	
 	private void getPlayerGridKeyFrame() {
 		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
@@ -206,7 +203,6 @@ public class FightController implements Initializable {
 				redMoveListIndex=0;
 				playerActiveIndex=0;
 				if(roundNumber > 4) nextRoundButton.setText("Finish");
-				
 			}
         });
 	}
@@ -222,7 +218,6 @@ public class FightController implements Initializable {
 		enemyController.removeHighestMoveFromSortedList();
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
-		
 	}
 	
 	public static <T> List<T> getNonDupList(List<T> list) {

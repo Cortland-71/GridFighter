@@ -42,7 +42,6 @@ public class EndGameController {
 	
 	public void setFinishButton(ActionEvent e) {
 		if(FightController.roundNumber > 4 || someoneDied()) {
-			fightController.getNextRoundButton().setText("Finish");
 			changeScene(e);
 		}
 	}
