@@ -78,10 +78,10 @@ public class AnimationController {
 	public void runPlayerAndEnemyKeyFrames() {
 		gridTimeLine = new Timeline();
         gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
-        getEnemyGridKeyFrame();
-        getPlayerGridKeyFrame();
+        getEnemyGridKeyFrameProcess();
+        getPlayerGridKeyFrameProcess();
         getAfterGridKeyFrames();
-        gridTimeLine.getKeyFrames().addAll(getEnemyGridKeyFrame(), getPlayerGridKeyFrame());
+        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
         gridTimeLine.play();
 	}
 	
