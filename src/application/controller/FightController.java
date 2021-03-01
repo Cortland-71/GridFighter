@@ -68,10 +68,10 @@ public class FightController implements Initializable {
 	private EnemyController enemyController;
 	
 	private EndGameController endGameController;
+	private AnimationController animationController;
 	
-	private KeyFrame playerGridKeyFrame;
-	private KeyFrame enemyGridKeyFrame;
-	private Timeline gridTimeLine;
+	
+	
 	
 	public static short roundNumber = 1;
 	
@@ -101,6 +101,7 @@ public class FightController implements Initializable {
 		playerController.updateAllPlayerStats();
 		
 		endGameController = new EndGameController(this);
+		animationController = new AnimationController(this);
 
 		executeButton.setDisable(true);
 		nextRoundButton.setDisable(true);
@@ -121,13 +122,17 @@ public class FightController implements Initializable {
 
 	public void executeButtonPress() {
 		executeButton.setDisable(true);
-		runPlayerAndEnemyKeyFrames();
+		animationController.runPlayerAndEnemyKeyFrames();
 	}
 	
 	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
 	
-	int redMoveListIndex = 0;
-	private void enemyFire(Person personAttacking, Person personBeingAttacked) {
+	private int redMoveListIndex = 0;
+	
+	public void setRedMoveListIndex(int redMoveListIndex) {
+		this.redMoveListIndex = redMoveListIndex;
+	}
+	public void enemyFire(Person personAttacking, Person personBeingAttacked) {
 		while(enemyController.getAllRedMoveIndexes().get(redMoveListIndex).isEmpty()) redMoveListIndex++;
 		for(int index : enemyController.getAllRedMoveIndexes().get(redMoveListIndex)) {
 			fireableList.get(index).fire(enemyController.getEnemy(), playerController.getPlayer());
@@ -135,8 +140,12 @@ public class FightController implements Initializable {
 		redMoveListIndex++;
 	}
 	
-	int playerActiveIndex = 0;
-	private void playerFire() {
+	private int playerActiveIndex = 0;
+	
+	public void setPlayerActiveIndex(int playerActiveIndex) {
+		this.playerActiveIndex = playerActiveIndex;
+	}
+	public void playerFire() {
 		String labelText = ((Label)playerController.getActivePlayerHBoxes().get(playerActiveIndex++).getChildren().get(0)).getText();
 		for(Fireable move : fireableList) {
 			if(labelText.equals(move.getId())) {
@@ -145,67 +154,6 @@ public class FightController implements Initializable {
 		}
 	}
 	
-	private void getEnemyGridKeyFrame() {
-		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
-	        new EventHandler<ActionEvent>() {
-				int enemyHBoxListIndex = 0;
-	            public void handle(ActionEvent event) {
-	            	List<HBox> activeEnemyHBoxes = enemyController.getActiveEnemyHBoxes().get(enemyHBoxListIndex);
-	            	for(HBox box : activeEnemyHBoxes) {
-	            		box.setStyle("-fx-background-color: -borderGray;");
-	            		((Label)box.getChildren().get(0)).setStyle("-fx-text-background-color: black;");
-	            	}
-	            	enemyHBoxListIndex++;
-	            	enemyFire(enemyController.getEnemy(), playerController.getPlayer());
-	            	updateAllStats();
-	            	enemyController.setAllEffects(enemyController.getActivePlayerQueIndexes().get(enemyHBoxListIndex-1));
-	            	
-	            }
-	        });
-	}
-	
-	private void getPlayerGridKeyFrame() {
-		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
-                new EventHandler<ActionEvent>() {
-        			int playerHBoxListIndex = 0;
-		            public void handle(ActionEvent event) {
-		               playerController.getActivePlayerHBoxes().get(playerHBoxListIndex)
-		               .setStyle("-fx-background-color: -borderGray;");
-		               playerHBoxListIndex++;
-		               
-		               playerFire();
-	                   updateAllStats();
-		            }
-        });
-	}
-	
-	private void updateAllStats() {
-		enemyController.updateAllEnemyStats();
-        playerController.updateAllPlayerStats();
-	}
-	
-	private void runPlayerAndEnemyKeyFrames() {
-		gridTimeLine = new Timeline();
-        gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
-        getEnemyGridKeyFrame();
-        getPlayerGridKeyFrame();
-        getAfterGridKeyFrames();
-        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
-        gridTimeLine.play();
-	}
-	
-	private void getAfterGridKeyFrames() {
-		gridTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				System.out.println("-----------------------------");
-				nextRoundButton.setDisable(false);
-				redMoveListIndex=0;
-				playerActiveIndex=0;
-				if(roundNumber > 4) nextRoundButton.setText("Finish");
-			}
-        });
-	}
 	
 	public void startNextRound(ActionEvent e) {
 		endGameController.setFinishButton(e);
@@ -218,7 +166,7 @@ public class FightController implements Initializable {
 		enemyController.removeHighestMoveFromSortedList();
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
-	}
+ 	}
 	
 	public static <T> List<T> getNonDupList(List<T> list) {
 		HashSet<T> set = new HashSet<>(list);
