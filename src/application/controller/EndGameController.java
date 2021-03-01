@@ -13,10 +13,8 @@ public class EndGameController {
 	
 	private EnemyController enemyController;
 	private PlayerController playerController;
-	private FightController fightController;
 	
 	public EndGameController(FightController fightController) {
-		this.fightController = fightController;
 		this.enemyController = fightController.getEnemyController();
 		this.playerController = fightController.getPlayerController();
 	}
@@ -40,7 +38,7 @@ public class EndGameController {
 		return false;
 	}
 	
-	public void setFinishButton(ActionEvent e) {
+	public void changeSceneIfSomeoneDiedOrAllRoundsAreOver(ActionEvent e) {
 		if(FightController.roundNumber > 4 || someoneDied()) {
 			changeScene(e);
 		}

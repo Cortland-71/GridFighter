@@ -1,6 +1,5 @@
 package application.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,24 +14,14 @@ import application.model.moves.Fireable;
 import application.model.moves.Heal;
 import application.model.moves.Insure;
 import application.model.moves.Steal;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class FightController implements Initializable {
 
@@ -70,10 +59,12 @@ public class FightController implements Initializable {
 	private EndGameController endGameController;
 	private AnimationController animationController;
 	
-	
-	
-	
 	public static short roundNumber = 1;
+	
+	private int redMoveListIndex = 0;
+	private int playerActiveIndex = 0;
+	
+	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
 	
 	public Button getNextRoundButton() {
 		return this.nextRoundButton;
@@ -115,6 +106,10 @@ public class FightController implements Initializable {
 	public EnemyController getEnemyController() {
 		return this.enemyController;
 	}
+	
+	public EndGameController getEndGameController() {
+		return this.endGameController;
+	}
 
 	public void addPlayerMoveToQue(Event e) {
 		playerController.addPlayerMoveToQue(e);
@@ -125,13 +120,19 @@ public class FightController implements Initializable {
 		animationController.runPlayerAndEnemyKeyFrames();
 	}
 	
-	private List<Fireable> fireableList = new ArrayList<>(Arrays.asList(new Attack(), new Defend(), new Steal(), new Insure(), new Heal()));
-	
-	private int redMoveListIndex = 0;
-	
 	public void setRedMoveListIndex(int redMoveListIndex) {
 		this.redMoveListIndex = redMoveListIndex;
 	}
+	
+	public void setPlayerActiveIndex(int playerActiveIndex) {
+		this.playerActiveIndex = playerActiveIndex;
+	}
+	
+	public static <T> List<T> getNonDupList(List<T> list) {
+		HashSet<T> set = new HashSet<>(list);
+		return new ArrayList<>(set);
+	}
+	
 	public void enemyFire(Person personAttacking, Person personBeingAttacked) {
 		while(enemyController.getAllRedMoveIndexes().get(redMoveListIndex).isEmpty()) redMoveListIndex++;
 		for(int index : enemyController.getAllRedMoveIndexes().get(redMoveListIndex)) {
@@ -140,11 +141,6 @@ public class FightController implements Initializable {
 		redMoveListIndex++;
 	}
 	
-	private int playerActiveIndex = 0;
-	
-	public void setPlayerActiveIndex(int playerActiveIndex) {
-		this.playerActiveIndex = playerActiveIndex;
-	}
 	public void playerFire() {
 		String labelText = ((Label)playerController.getActivePlayerHBoxes().get(playerActiveIndex++).getChildren().get(0)).getText();
 		for(Fireable move : fireableList) {
@@ -154,9 +150,8 @@ public class FightController implements Initializable {
 		}
 	}
 	
-	
-	public void startNextRound(ActionEvent e) {
-		endGameController.setFinishButton(e);
+	public void startNextRoundButtonEvent(ActionEvent e) {
+		endGameController.changeSceneIfSomeoneDiedOrAllRoundsAreOver(e);
 		nextRoundButton.setDisable(true);
 		PlayerController.playerQueCounter = 0;
 		playerController.getActivePlayerHBoxes().clear();
@@ -167,9 +162,4 @@ public class FightController implements Initializable {
 		playerController.disableCorrectButtons();
 		playerController.clearPlayerGrid();
  	}
-	
-	public static <T> List<T> getNonDupList(List<T> list) {
-		HashSet<T> set = new HashSet<>(list);
-		return new ArrayList<>(set);
-	}
 }

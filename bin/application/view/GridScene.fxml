@@ -192,7 +192,7 @@
             <Region prefHeight="53.0" prefWidth="1080.0" />
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1080.0" spacing="10.0">
                <children>
-                  <Button fx:id="nextRoundButton" mnemonicParsing="false" onAction="#startNextRound" prefWidth="100.0" text="Next Round" />
+                  <Button fx:id="nextRoundButton" mnemonicParsing="false" onAction="#startNextRoundButtonEvent" prefWidth="100.0" text="Next Round" />
                   <Label fx:id="roundLabel" text="Round" />
                </children>
             </HBox>

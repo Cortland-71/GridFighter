@@ -2,15 +2,10 @@ package application.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import application.controller.FightController;
-import javafx.scene.control.Label;
 
 public class Enemy extends Person {
 	private List<List<Integer>> enemyMoveLists = new ArrayList<>();

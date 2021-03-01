@@ -41,7 +41,17 @@ public class AnimationController {
         playerController.updateAllPlayerStats();
 	}
 	
-	public void getEnemyGridKeyFrameProcess() {
+	public void runPlayerAndEnemyKeyFrames() {
+		gridTimeLine = new Timeline();
+        gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
+        getEnemyGridKeyFrameProcess();
+        getPlayerGridKeyFrameProcess();
+        getAfterGridKeyFrames();
+        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
+        gridTimeLine.play();
+	}
+	
+	private void getEnemyGridKeyFrameProcess() {
 		enemyGridKeyFrame = new KeyFrame(Duration.millis(250),
 	        new EventHandler<ActionEvent>() {
 				int enemyHBoxListIndex = 0;
@@ -60,7 +70,7 @@ public class AnimationController {
 	        });
 	}
 	
-	public void getPlayerGridKeyFrameProcess() {
+	private void getPlayerGridKeyFrameProcess() {
 		playerGridKeyFrame = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
         			int playerHBoxListIndex = 0;
@@ -75,16 +85,6 @@ public class AnimationController {
         });
 	}
 	
-	public void runPlayerAndEnemyKeyFrames() {
-		gridTimeLine = new Timeline();
-        gridTimeLine.setCycleCount(enemyController.getActiveEnemyHBoxes().size());
-        getEnemyGridKeyFrameProcess();
-        getPlayerGridKeyFrameProcess();
-        getAfterGridKeyFrames();
-        gridTimeLine.getKeyFrames().addAll(enemyGridKeyFrame, playerGridKeyFrame);
-        gridTimeLine.play();
-	}
-	
 	private void getAfterGridKeyFrames() {
 		gridTimeLine.setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
@@ -93,7 +93,10 @@ public class AnimationController {
 				fightController.getNextRoundButton().setDisable(false);
 				fightController.setRedMoveListIndex(0);
 				fightController.setPlayerActiveIndex(0);
-				if(FightController.roundNumber > 4) fightController.getNextRoundButton().setText("Finish");
+				if(FightController.roundNumber > 4 || 
+						fightController.getEndGameController().someoneDied()) {
+					fightController.getNextRoundButton().setText("Finish");
+				}
 			}
         });
 	}
