@@ -263,12 +263,12 @@
 					<children>
 						<VBox prefHeight="153.0" prefWidth="150.0" spacing="5.0">
 							<children>
-								<Label text="COST" />
-								<Label fx:id="atkCostLabel" text="ATK" />
-								<Label fx:id="defCostLabel" text="DEF" />
-								<Label fx:id="stlCostLabel" text="STL" />
-								<Label fx:id="insCostLabel" text="INS" />
-								<Label fx:id="helCostLabel" text="HEL $" />
+								<Label text="CURRENT COST" />
+								<Label fx:id="currentAtkCostLabel" text="ATK" />
+								<Label fx:id="currentDefCostLabel" text="DEF" />
+								<Label fx:id="currentStlCostLabel" text="STL" />
+								<Label fx:id="currentInsCostLabel" text="INS" />
+								<Label fx:id="currentHelCostLabel" text="HEL $" />
 							</children>
 							<padding>
 								<Insets left="15.0" />
@@ -276,12 +276,12 @@
 						</VBox>
 						<VBox prefHeight="200.0" prefWidth="150.0" spacing="5.0">
 							<children>
-								<Label text="EFFECT" />
-								<Label text="ATK" />
-								<Label text="DEF" />
-								<Label text="STL" />
-								<Label text="INS" />
-								<Label text="HEL" />
+								<Label text="NEXT ROUND COST" />
+								<Label fx:id="nextRoundAtkCostLabel" text="ATK" />
+								<Label fx:id="nextRoundDefCostLabel" text="DEF" />
+								<Label fx:id="nextRoundStlCostLabel" text="STL" />
+								<Label fx:id="nextRoundInsCostLabel" text="INS" />
+								<Label fx:id="nextRoundHelCostLabel" text="HEL" />
 							</children>
 						</VBox>
 					</children>

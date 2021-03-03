@@ -35,11 +35,17 @@ public class PlayerController {
 	@FXML Button healButton;
 	@FXML Button executeButton;
 	
-	@FXML Label atkCostLabel;
-	@FXML Label defCostLabel;
-	@FXML Label stlCostLabel;
-	@FXML Label insCostLabel;
-	@FXML Label helCostLabel;
+	@FXML Label currentAtkCostLabel;
+	@FXML Label currentDefCostLabel;
+	@FXML Label currentStlCostLabel;
+	@FXML Label currentInsCostLabel;
+	@FXML Label currentHelCostLabel;
+	
+	@FXML Label nextRoundAtkCostLabel;
+	@FXML Label nextRoundDefCostLabel;
+	@FXML Label nextRoundStlCostLabel;
+	@FXML Label nextRoundInsCostLabel;
+	@FXML Label nextRoundHelCostLabel;
 
 	private List<Button> playerButtonList;
 	
@@ -73,12 +79,22 @@ public class PlayerController {
 				Arrays.asList(attackButton, defendButton, stealButton, insureButton, healButton));
 	}
 	
-	public void setPlayerCostLabels(Label atkCostLabel, Label defCostLabel, Label stlCostLabel, Label insCostLabel, Label helCostLabel) {
-		this.atkCostLabel = atkCostLabel;
-		this.defCostLabel = defCostLabel;
-		this.stlCostLabel = stlCostLabel;
-		this.insCostLabel = insCostLabel;
-		this.helCostLabel = helCostLabel;
+	public void setPlayerCurrentCostLabels(Label currentAtkCostLabel, Label currentDefCostLabel, 
+			Label currentStlCostLabel, Label currentInsCostLabel, Label currentHelCostLabel) {
+		this.currentAtkCostLabel = currentAtkCostLabel;
+		this.currentDefCostLabel = currentDefCostLabel;
+		this.currentStlCostLabel = currentStlCostLabel;
+		this.currentInsCostLabel = currentInsCostLabel;
+		this.currentHelCostLabel = currentHelCostLabel;
+	}
+	
+	public void setPlayerNextRoundCostLabels(Label nextRoundAtkCostLabel, Label nextRoundDefCostLabel, 
+			Label nextRoundStlCostLabel, Label nextRoundInsCostLabel, Label nextRoundHelCostLabel) {
+		this.nextRoundAtkCostLabel = nextRoundAtkCostLabel;
+		this.nextRoundDefCostLabel = nextRoundDefCostLabel;
+		this.nextRoundStlCostLabel = nextRoundStlCostLabel;
+		this.nextRoundInsCostLabel = nextRoundInsCostLabel;
+		this.nextRoundHelCostLabel = nextRoundHelCostLabel;
 	}
 
 	public void addPlayerMoveToQue(Event e) {
@@ -120,11 +136,18 @@ public class PlayerController {
 		playerEgBar.setProgress(player.getEg());
 		playerEgLabel.setText(String.format("%,.2f", player.getEg()));
 		
-		atkCostLabel.setText("ATK: " + player.getAtkCost());
-		defCostLabel.setText("DEF: " + player.getDefCost());
-		stlCostLabel.setText("STL: " + player.getStlCost());
-		insCostLabel.setText("INS: " + player.getInsCost());
-		helCostLabel.setText("HEL: $" + player.getHelCost());
+		currentAtkCostLabel.setText("ATK: " + player.getCurrentAtkCost());
+		currentDefCostLabel.setText("DEF: " + player.getCurrentDefCost());
+		currentStlCostLabel.setText("STL: " + player.getCurrentStlCost());
+		currentInsCostLabel.setText("INS: " + player.getCurrentInsCost());
+		currentHelCostLabel.setText("HEL: $" + player.getCurrentHelCost());
+		
+		nextRoundAtkCostLabel.setText("ATK: " + player.getNextRoundAtkCost());
+		nextRoundDefCostLabel.setText("DEF: " + player.getNextRoundDefCost());
+		nextRoundStlCostLabel.setText("STL: " + player.getNextRoundStlCost());
+		nextRoundInsCostLabel.setText("INS: " + player.getNextRoundInsCost());
+		nextRoundHelCostLabel.setText("HEL: $" + player.getNextRoundHelCost());
+		
 	}
 	
 	public List<Button> getPlayerButtonList() {

@@ -3,59 +3,109 @@ package application.model;
 public class Player extends Person {
 
 	private double eg = 1;
-	private double atkCost = .05;
-	private double defCost = .05;
-	private double stlCost = .05;
-	private double insCost = .05;
-	private double helCost = 5.50;
-
-	public void setEg(double eg) {
-		this.eg = eg;
-	}
+	private double currentAtkCost = .05;
+	private double currentDefCost = .05;
+	private double currentStlCost = .05;
+	private double currentInsCost = .05;
+	private double currentHelCost = 5.50;
+	
+	private double nextRoundAtkCost = .05;
+	private double nextRoundDefCost = .05;
+	private double nextRoundStlCost = .05;
+	private double nextRoundInsCost = .05;
+	private double nextRoundHelCost = 5.50;
+	
+	
 
 	public double getEg() {
 		return eg;
 	}
 
-	public double getAtkCost() {
-		return atkCost;
+	public void setEg(double eg) {
+		this.eg = eg;
 	}
 
-	public void setAtkCost(double atkCost) {
-		this.atkCost = atkCost;
+	public double getCurrentAtkCost() {
+		return currentAtkCost;
 	}
 
-	public double getDefCost() {
-		return defCost;
+	public void setCurrentAtkCost(double currentAtkCost) {
+		this.currentAtkCost = currentAtkCost;
 	}
 
-	public void setDefCost(double defCost) {
-		this.defCost = defCost;
+	public double getCurrentDefCost() {
+		return currentDefCost;
 	}
 
-	public double getStlCost() {
-		return stlCost;
+	public void setCurrentDefCost(double currentDefCost) {
+		this.currentDefCost = currentDefCost;
 	}
 
-	public void setStlCost(double stlCost) {
-		this.stlCost = stlCost;
+	public double getCurrentStlCost() {
+		return currentStlCost;
 	}
 
-	public double getInsCost() {
-		return insCost;
+	public void setCurrentStlCost(double currentStlCost) {
+		this.currentStlCost = currentStlCost;
 	}
 
-	public void setInsCost(double insCost) {
-		this.insCost = insCost;
+	public double getCurrentInsCost() {
+		return currentInsCost;
 	}
 
-	public double getHelCost() {
-		return helCost;
+	public void setCurrentInsCost(double currentInsCost) {
+		this.currentInsCost = currentInsCost;
 	}
 
-	public void setHelCost(double helCost) {
-		this.helCost = helCost;
+	public double getCurrentHelCost() {
+		return currentHelCost;
 	}
+
+	public void setCurrentHelCost(double currentHelCost) {
+		this.currentHelCost = currentHelCost;
+	}
+
+	public double getNextRoundAtkCost() {
+		return nextRoundAtkCost;
+	}
+
+	public void setNextRoundAtkCost(double nextRoundAtkCost) {
+		this.nextRoundAtkCost = nextRoundAtkCost;
+	}
+
+	public double getNextRoundDefCost() {
+		return nextRoundDefCost;
+	}
+
+	public void setNextRoundDefCost(double nextRoundDefCost) {
+		this.nextRoundDefCost = nextRoundDefCost;
+	}
+
+	public double getNextRoundStlCost() {
+		return nextRoundStlCost;
+	}
+
+	public void setNextRoundStlCost(double nextRoundStlCost) {
+		this.nextRoundStlCost = nextRoundStlCost;
+	}
+
+	public double getNextRoundInsCost() {
+		return nextRoundInsCost;
+	}
+
+	public void setNextRoundInsCost(double nextRoundInsCost) {
+		this.nextRoundInsCost = nextRoundInsCost;
+	}
+
+	public double getNextRoundHelCost() {
+		return nextRoundHelCost;
+	}
+
+	public void setNextRoundHelCost(double nextRoundHelCost) {
+		this.nextRoundHelCost = nextRoundHelCost;
+	}
+
+	
 	
 	
 

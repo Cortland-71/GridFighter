@@ -45,11 +45,17 @@ public class FightController implements Initializable {
 	@FXML ProgressBar enemyHpBar;
 	@FXML Label enemyHpLabel;
 	
-	@FXML Label atkCostLabel;
-	@FXML Label defCostLabel;
-	@FXML Label stlCostLabel;
-	@FXML Label insCostLabel;
-	@FXML Label helCostLabel;
+	@FXML Label currentAtkCostLabel;
+	@FXML Label currentDefCostLabel;
+	@FXML Label currentStlCostLabel;
+	@FXML Label currentInsCostLabel;
+	@FXML Label currentHelCostLabel;
+	
+	@FXML Label nextRoundAtkCostLabel;
+	@FXML Label nextRoundDefCostLabel;
+	@FXML Label nextRoundStlCostLabel;
+	@FXML Label nextRoundInsCostLabel;
+	@FXML Label nextRoundHelCostLabel;
 	
 	@FXML Label roundLabel;
 
@@ -87,7 +93,11 @@ public class FightController implements Initializable {
 		playerController.setPlayerComponents(playerGrid, playerHpBar, playerEgBar, playerHpLabel, playerEgLabel, playerCashLabel);
 		playerController.setPlayerButtons(attackButton, defendButton, stealButton, insureButton, healButton,
 				executeButton);
-		playerController.setPlayerCostLabels(atkCostLabel, defCostLabel, stlCostLabel, insCostLabel, helCostLabel);
+		playerController.setPlayerCurrentCostLabels(currentAtkCostLabel, currentDefCostLabel, currentStlCostLabel, 
+				currentInsCostLabel, currentHelCostLabel);
+		
+		playerController.setPlayerNextRoundCostLabels(nextRoundAtkCostLabel, nextRoundDefCostLabel, nextRoundStlCostLabel, 
+				nextRoundInsCostLabel, nextRoundHelCostLabel);
 		playerController.disableCorrectButtons();
 		playerController.updateAllPlayerStats();
 		
