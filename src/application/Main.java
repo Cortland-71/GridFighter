@@ -14,9 +14,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		try {
-			BorderPane root = FXMLLoader.load(getClass().getResource("view/GridScene.fxml"));
+			BorderPane root = FXMLLoader.load(getClass().getResource("controller/GridScene.fxml"));
 			Scene scene = new Scene(root,1080,750);
-			scene.getStylesheets().add(getClass().getResource("view/rootStyle.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("controller/rootStyle.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

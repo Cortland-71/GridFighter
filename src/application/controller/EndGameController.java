@@ -20,6 +20,7 @@ public class EndGameController {
 	}
 	
 	public void changeScene(ActionEvent event) {
+		FightController.roundNumber = 0;
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("ResultScene.fxml"));
 			Scene scene = new Scene(root);
